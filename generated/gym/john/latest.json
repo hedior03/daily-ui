@@ -133,7 +133,7 @@
     "accessories-stack": {
       "type": "Stack",
       "props": { "gap": "md" },
-      "children": ["accessories-title", "accessories-table", "accessories-accordion", "accessories-done"]
+      "children": ["accessories-title", "accessories-table", "accessories-swaps", "accessories-done"]
     },
     "accessories-title": {
       "type": "Heading",
@@ -153,14 +153,20 @@
         ]
       }
     },
-    "accessories-accordion": {
-      "type": "Accordion",
+    "accessories-swaps": {
+      "type": "Collapsible",
+      "props": { "title": "Alternative swaps" },
+      "children": ["accessories-swaps-table"]
+    },
+    "accessories-swaps-table": {
+      "type": "Table",
       "props": {
-        "items": [
-          {
-            "title": "Alternative swaps",
-            "content": "Lat Pulldown → Pull-ups (weighted if possible). Barbell Curl → Incline DB Curl. Seated Cable Row → Chest-Supported Row. Reverse Fly → Band pull-aparts 3x25."
-          }
+        "columns": ["Exercise", "Alternative"],
+        "rows": [
+          ["Lat Pulldown", "Pull-ups (weighted if possible)"],
+          ["Barbell Curl", "Incline DB Curl"],
+          ["Seated Cable Row", "Chest-Supported Row"],
+          ["Reverse Fly", "Band pull-aparts 3x25"]
         ]
       }
     },

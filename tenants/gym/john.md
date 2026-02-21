@@ -15,7 +15,7 @@ schedule:
 
 ## Goals
 
-- Build muscle, focus on upper body
+- Build muscle with a balanced Push/Pull/Legs split
 - Improve deadlift (current PR: 140kg)
 
 ## Constraints
@@ -23,8 +23,14 @@ schedule:
 - Shoulder impingement — avoid heavy overhead pressing
 - Sessions 45-60 min max
 
+## Training Split
+
+- Monday: Push (chest, triceps, front/side delts)
+- Wednesday: Pull (back, biceps, rear delts)
+- Friday: Legs (quads, hamstrings, glutes, calves)
+- Saturday: Pull — deadlift focus (back, hamstrings, biceps)
+
 ## Preferences
 
-- Push/Pull/Legs split
 - Likes supersets for accessories
 - Full commercial gym access

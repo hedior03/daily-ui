@@ -7,6 +7,8 @@ interface SpecRendererProps {
   category: string;
   tenant: string;
   storageKey: string;
+  file?: string;
+  showDate?: boolean;
 }
 
 const STORAGE_PREFIX = "daily-ui:";
@@ -38,6 +40,8 @@ export default function SpecRenderer({
   category,
   tenant,
   storageKey,
+  file = "latest",
+  showDate = false,
 }: SpecRendererProps) {
   const [spec, setSpec] = useState<Spec | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -51,7 +55,7 @@ export default function SpecRenderer({
       try {
         const baseUrl = import.meta.env.BASE_URL || "/";
         const response = await fetch(
-          `${baseUrl}/api/${category}/${tenant}/latest.json`
+          `${baseUrl}/api/${category}/${tenant}/${file}.json`
         );
 
         if (!response.ok) {
@@ -60,7 +64,10 @@ export default function SpecRenderer({
 
         const data: Spec = await response.json();
         setSpec(data);
-        const loaded = loadState(storageKey, data.state ?? {});
+
+        // State isolation: use date as part of the key
+        const fullStorageKey = `${storageKey}:${file}`;
+        const loaded = loadState(fullStorageKey, data.state ?? {});
         setInitialState(loaded);
         stateRef.current = { ...loaded };
       } catch (err) {
@@ -69,20 +76,21 @@ export default function SpecRenderer({
     };
 
     fetchSpec();
-  }, [category, tenant, storageKey]);
+  }, [category, tenant, storageKey, file]);
 
   const handleStateChange = useCallback(
     (path: string, value: unknown) => {
+      const fullStorageKey = `${storageKey}:${file}`;
       stateRef.current[path] = value;
-      saveState(storageKey, stateRef.current);
+      saveState(fullStorageKey, stateRef.current);
     },
-    [storageKey]
+    [storageKey, file]
   );
 
   if (error) {
     return (
       <div className="flex items-center justify-center py-12 text-destructive">
-        Error: {error}
+        Error loading {file}: {error}
       </div>
     );
   }
@@ -90,19 +98,35 @@ export default function SpecRenderer({
   if (!spec) {
     return (
       <div className="flex items-center justify-center py-12 text-muted-foreground">
-        Loading...
+        Loading {file}...
       </div>
     );
   }
 
   return (
-    <JSONUIProvider
-      registry={registry}
-      initialState={initialState}
-      handlers={{}}
-      onStateChange={handleStateChange}
-    >
-      <Renderer spec={spec} registry={registry} />
-    </JSONUIProvider>
+    <div className="space-y-4">
+      {showDate && file !== "latest" && (
+        <div className="flex items-center gap-4">
+          <div className="h-px flex-1 bg-border"></div>
+          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            {new Date(file).toLocaleDateString("en-US", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </span>
+          <div className="h-px flex-1 bg-border"></div>
+        </div>
+      )}
+      <JSONUIProvider
+        registry={registry}
+        initialState={initialState}
+        handlers={{}}
+        onStateChange={handleStateChange}
+      >
+        <Renderer spec={spec} registry={registry} />
+      </JSONUIProvider>
+    </div>
   );
 }

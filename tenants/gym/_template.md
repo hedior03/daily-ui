@@ -15,7 +15,7 @@ Focus on clean, readable display of the workout. Minimize interactivity.
 - **Alert** for form cues, safety notes, and setup instructions
 - **Table** for exercise details: columns as strings (Exercise, Sets, Reps, Rest, RPE, etc), rows as 2D string arrays
 - **Badge** for muscle groups worked today (use Stack with direction: "horizontal")
-- **Accordion** for alternative exercise swaps (optional alternatives only)
+- **Collapsible** with a child **Table** for alternative exercise swaps (one row per swap, columns: Exercise, Alternative)
 - **Checkbox** for marking entire sections complete (minimal state - one per section, not per exercise)
 - **Text** for details like duration and focus area
 - Keep state minimal: just section-completion flags at `/completed/warmup`, `/completed/mainLifts`, etc

@@ -20,6 +20,7 @@ export const catalog = defineCatalog(schema, {
     Checkbox: c.Checkbox,
     Switch: c.Switch,
     Input: c.Input,
+    Collapsible: c.Collapsible,
   },
   actions: {},
 });

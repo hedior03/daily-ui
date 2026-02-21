@@ -20,5 +20,6 @@ export const { registry } = defineRegistry(catalog, {
     Checkbox: c.Checkbox,
     Switch: c.Switch,
     Input: c.Input,
+    Collapsible: c.Collapsible,
   },
 });

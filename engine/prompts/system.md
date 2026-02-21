@@ -126,11 +126,19 @@ Alert banner for information, warnings, success, or errors
 
 ### Accordion
 
-Collapsible accordion sections. Items as [{title, content}].
+Collapsible accordion sections. Items as [{title, content}]. Use only for simple text content.
 
 **Props:**
   - `items` (array of {title: string, content: string})
   - `type` (enum: "single", "multiple", nullable) — default is "single"
+
+### Collapsible
+
+A single collapsible section with a trigger title. Children render inside. Use for rich content (like tables or stacks of text).
+
+**Props:**
+  - `title` (string, required) — The text to display on the trigger
+  - `defaultOpen` (boolean, nullable) — Whether it starts expanded
 
 ### Progress
 
