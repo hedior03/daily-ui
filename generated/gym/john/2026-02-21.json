@@ -1,10 +1,10 @@
 {
-  "root": "main-stack",
+  "root": "page",
   "elements": {
-    "main-stack": {
+    "page": {
       "type": "Stack",
       "props": { "gap": "lg" },
-      "children": ["header-card", "warmup-card", "main-lifts-card", "accessories-card", "cooldown-card", "session-progress-card"]
+      "children": ["header-card", "muscle-badges", "warmup-card", "main-lifts-card", "accessories-card", "cooldown-card", "swaps-card"]
     },
     "header-card": {
       "type": "Card",
@@ -14,231 +14,155 @@
     "header-stack": {
       "type": "Stack",
       "props": { "gap": "sm" },
-      "children": ["header-title", "header-subtitle", "header-badges"]
+      "children": ["header-title", "header-subtitle", "header-text"]
     },
     "header-title": {
       "type": "Heading",
-      "props": { "level": "h2", "text": "Pull Day — Deadlift Focus" }
+      "props": { "level": "h2", "text": "Saturday Pull — Deadlift Focus" }
     },
     "header-subtitle": {
       "type": "Text",
       "props": { "text": "Saturday, February 21 2026 — Estimated 55 min", "variant": "muted" }
     },
-    "header-badges": {
+    "header-text": {
+      "type": "Text",
+      "props": { "text": "Heavy deadlift day with back and bicep accessories. Keep rest periods strict on accessories to stay within time.", "variant": "body" }
+    },
+    "muscle-badges": {
       "type": "Stack",
-      "props": { "direction": "horizontal", "gap": "sm" },
-      "children": ["badge-back", "badge-biceps", "badge-rear-delts", "badge-hamstrings"]
+      "props": { "direction": "horizontal", "gap": "sm", "align": "center" },
+      "children": ["badge-back", "badge-hamstrings", "badge-biceps", "badge-rear-delts", "badge-grip"]
     },
-    "badge-back": {
-      "type": "Badge",
-      "props": { "text": "Back" }
-    },
-    "badge-biceps": {
-      "type": "Badge",
-      "props": { "text": "Biceps" }
-    },
-    "badge-rear-delts": {
-      "type": "Badge",
-      "props": { "text": "Rear Delts" }
-    },
-    "badge-hamstrings": {
-      "type": "Badge",
-      "props": { "text": "Hamstrings" }
-    },
+    "badge-back": { "type": "Badge", "props": { "text": "Back", "variant": "default" } },
+    "badge-hamstrings": { "type": "Badge", "props": { "text": "Hamstrings", "variant": "default" } },
+    "badge-biceps": { "type": "Badge", "props": { "text": "Biceps", "variant": "secondary" } },
+    "badge-rear-delts": { "type": "Badge", "props": { "text": "Rear Delts", "variant": "secondary" } },
+    "badge-grip": { "type": "Badge", "props": { "text": "Grip", "variant": "outline" } },
+
     "warmup-card": {
       "type": "Card",
       "props": {},
-      "children": ["warmup-stack"]
+      "children": ["warmup-heading", "warmup-table", "warmup-alert", "warmup-check"]
     },
-    "warmup-stack": {
-      "type": "Stack",
-      "props": { "gap": "md" },
-      "children": ["warmup-title", "warmup-alert", "warmup-table", "warmup-done"]
-    },
-    "warmup-title": {
-      "type": "Heading",
-      "props": { "level": "h3", "text": "Warmup" }
-    },
-    "warmup-alert": {
-      "type": "Alert",
-      "props": {
-        "title": "Deadlift prep",
-        "message": "Prime your hinge pattern with light RDLs. Brace hard on every rep — belt optional until working sets above 100kg.",
-        "type": "warning"
-      }
-    },
+    "warmup-heading": { "type": "Heading", "props": { "text": "Warmup", "level": "h3" } },
     "warmup-table": {
       "type": "Table",
       "props": {
-        "columns": ["Exercise", "Sets / Duration"],
+        "columns": ["Exercise", "Duration / Reps", "Notes"],
         "rows": [
-          ["Cat-cow + hip circles", "1 min"],
-          ["Band pull-aparts", "2 x 15"],
-          ["Light RDL (empty bar)", "2 x 8"],
-          ["Dead hang", "2 x 20s"]
+          ["Rowing Machine", "3 min", "Easy pace, loosen up"],
+          ["Cat-Cow Stretch", "10 reps", "Slow and controlled"],
+          ["Band Pull-Aparts", "2 × 15", "Light band, squeeze rear delts"],
+          ["Hip Hinge with Dowel", "2 × 10", "Groove the hinge pattern"],
+          ["Deadlift — Empty Bar", "2 × 8", "Focus on brace and lockout"]
         ]
       }
     },
-    "warmup-done": {
-      "type": "Checkbox",
-      "props": {
-        "label": "Warmup completed",
-        "checked": { "$bindState": "/completed/warmup" }
-      }
+    "warmup-alert": {
+      "type": "Alert",
+      "props": { "title": "Brace before every rep", "message": "Big breath into your belt, push obliques out. Reset between reps on the working sets.", "type": "info" }
     },
+    "warmup-check": {
+      "type": "Checkbox",
+      "props": { "label": "Warmup complete", "name": "warmup-done", "checked": { "$bindState": "/completed/warmup" } }
+    },
+
     "main-lifts-card": {
       "type": "Card",
       "props": {},
-      "children": ["main-lifts-stack"]
+      "children": ["main-heading", "main-table", "main-alert", "main-check"]
     },
-    "main-lifts-stack": {
-      "type": "Stack",
-      "props": { "gap": "md" },
-      "children": ["main-lifts-title", "deadlift-alert", "main-lifts-table", "main-lifts-done"]
-    },
-    "main-lifts-title": {
-      "type": "Heading",
-      "props": { "level": "h3", "text": "Main Lifts" }
-    },
-    "deadlift-alert": {
-      "type": "Alert",
+    "main-heading": { "type": "Heading", "props": { "text": "Main Lifts", "level": "h3" } },
+    "main-table": {
+      "type": "Table",
       "props": {
-        "title": "Deadlift cue",
-        "message": "Push the floor away. Squeeze lats before the pull — imagine bending the bar around your shins. Current PR: 140kg — today's top set is ~85% for controlled triples.",
-        "type": "info"
+        "columns": ["Exercise", "Sets", "Reps", "Rest", "RPE", "Notes"],
+        "rows": [
+          ["Conventional Deadlift", "4", "3", "3 min", "8–9", "Work up: 100 → 110 → 120 → 130 kg"],
+          ["Deadlift Back-Off", "1", "5", "—", "7", "110 kg — controlled tempo"],
+          ["Barbell Row (Pendlay)", "4", "6", "2 min", "8", "Pull to lower chest, pause at top"]
+        ]
       }
     },
-    "main-lifts-table": {
+    "main-alert": {
+      "type": "Alert",
+      "props": { "title": "Deadlift cue", "message": "Push the floor away with your legs, don't yank with your back. Squeeze glutes hard at lockout. Building toward that 140 kg+ PR — keep form tight.", "type": "warning" }
+    },
+    "main-check": {
+      "type": "Checkbox",
+      "props": { "label": "Main lifts complete", "name": "main-done", "checked": { "$bindState": "/completed/mainLifts" } }
+    },
+
+    "accessories-card": {
+      "type": "Card",
+      "props": {},
+      "children": ["acc-heading", "acc-note", "acc-table", "acc-check"]
+    },
+    "acc-heading": { "type": "Heading", "props": { "text": "Accessories", "level": "h3" } },
+    "acc-note": { "type": "Text", "props": { "text": "Superset pairs A1/A2 and B1/B2 — rest 60s between supersets.", "variant": "muted" } },
+    "acc-table": {
       "type": "Table",
       "props": {
         "columns": ["Exercise", "Sets", "Reps", "Rest", "RPE"],
         "rows": [
-          ["Conventional Deadlift", "4", "3", "3 min", "8"],
-          ["Barbell Row (Pendlay)", "4", "6-8", "2 min", "7-8"]
+          ["A1 — Chest-Supported Row", "3", "10", "—", "8"],
+          ["A2 — Dumbbell Hammer Curl", "3", "12", "60s", "7–8"],
+          ["B1 — Face Pull", "3", "15", "—", "7"],
+          ["B2 — Plate Pinch Hold", "3", "30s", "60s", "8"]
         ]
       }
     },
-    "main-lifts-done": {
+    "acc-check": {
       "type": "Checkbox",
-      "props": {
-        "label": "Main lifts completed",
-        "checked": { "$bindState": "/completed/mainLifts" }
-      }
+      "props": { "label": "Accessories complete", "name": "acc-done", "checked": { "$bindState": "/completed/accessories" } }
     },
-    "accessories-card": {
+
+    "cooldown-card": {
       "type": "Card",
       "props": {},
-      "children": ["accessories-stack"]
+      "children": ["cool-heading", "cool-table", "cool-check"]
     },
-    "accessories-stack": {
-      "type": "Stack",
-      "props": { "gap": "md" },
-      "children": ["accessories-title", "accessories-table", "accessories-swaps", "accessories-done"]
-    },
-    "accessories-title": {
-      "type": "Heading",
-      "props": { "level": "h3", "text": "Accessories (Supersets)" }
-    },
-    "accessories-table": {
+    "cool-heading": { "type": "Heading", "props": { "text": "Cooldown", "level": "h3" } },
+    "cool-table": {
       "type": "Table",
       "props": {
-        "columns": ["Superset", "Exercise", "Sets", "Reps"],
+        "columns": ["Exercise", "Duration", "Notes"],
         "rows": [
-          ["A", "Lat Pulldown", "3", "10-12"],
-          ["A", "Barbell Curl", "3", "10-12"],
-          ["B", "Face Pull", "3", "15-20"],
-          ["B", "Hammer Curl", "3", "12"],
-          ["C", "Seated Cable Row", "3", "12-15"],
-          ["C", "Reverse Fly (machine)", "3", "15"]
+          ["Hanging from Bar", "2 × 30s", "Decompress spine after deads"],
+          ["Seated Hamstring Stretch", "60s each side", "Breathe into the stretch"],
+          ["Child's Pose", "60s", "Let lower back release"]
         ]
       }
     },
-    "accessories-swaps": {
-      "type": "Collapsible",
-      "props": { "title": "Alternative swaps" },
-      "children": ["accessories-swaps-table"]
+    "cool-check": {
+      "type": "Checkbox",
+      "props": { "label": "Cooldown complete", "name": "cool-done", "checked": { "$bindState": "/completed/cooldown" } }
     },
-    "accessories-swaps-table": {
+
+    "swaps-card": {
+      "type": "Card",
+      "props": {},
+      "children": ["swaps-heading", "swaps-collapsible"]
+    },
+    "swaps-heading": { "type": "Heading", "props": { "text": "Exercise Swaps", "level": "h3" } },
+    "swaps-collapsible": {
+      "type": "Collapsible",
+      "props": { "title": "View alternative exercises", "defaultOpen": false },
+      "children": ["swaps-table"]
+    },
+    "swaps-table": {
       "type": "Table",
       "props": {
         "columns": ["Exercise", "Alternative"],
         "rows": [
-          ["Lat Pulldown", "Pull-ups (weighted if possible)"],
-          ["Barbell Curl", "Incline DB Curl"],
-          ["Seated Cable Row", "Chest-Supported Row"],
-          ["Reverse Fly", "Band pull-aparts 3x25"]
+          ["Conventional Deadlift", "Trap Bar Deadlift"],
+          ["Barbell Row (Pendlay)", "Seal Row or T-Bar Row"],
+          ["Chest-Supported Row", "Cable Row (neutral grip)"],
+          ["Dumbbell Hammer Curl", "Cable Rope Curl"],
+          ["Face Pull", "Reverse Pec Deck"],
+          ["Plate Pinch Hold", "Farmer's Walk (30m)"]
         ]
       }
-    },
-    "accessories-done": {
-      "type": "Checkbox",
-      "props": {
-        "label": "Accessories completed",
-        "checked": { "$bindState": "/completed/accessories" }
-      }
-    },
-    "cooldown-card": {
-      "type": "Card",
-      "props": {},
-      "children": ["cooldown-stack"]
-    },
-    "cooldown-stack": {
-      "type": "Stack",
-      "props": { "gap": "md" },
-      "children": ["cooldown-title", "cooldown-table", "cooldown-done"]
-    },
-    "cooldown-title": {
-      "type": "Heading",
-      "props": { "level": "h3", "text": "Cooldown" }
-    },
-    "cooldown-table": {
-      "type": "Table",
-      "props": {
-        "columns": ["Exercise", "Duration"],
-        "rows": [
-          ["Lat stretch (hang from bar)", "30s each side"],
-          ["Seated hamstring stretch", "45s each leg"],
-          ["Foam roll lower back & lats", "2 min"],
-          ["Child's pose", "1 min"]
-        ]
-      }
-    },
-    "cooldown-done": {
-      "type": "Checkbox",
-      "props": {
-        "label": "Cooldown completed",
-        "checked": { "$bindState": "/completed/cooldown" }
-      }
-    },
-    "session-progress-card": {
-      "type": "Card",
-      "props": {},
-      "children": ["session-progress-stack"]
-    },
-    "session-progress-stack": {
-      "type": "Stack",
-      "props": { "gap": "md" },
-      "children": ["session-progress-title", "session-stats", "session-progress-bar"]
-    },
-    "session-progress-title": {
-      "type": "Heading",
-      "props": { "level": "h3", "text": "Session Summary" }
-    },
-    "session-stats": {
-      "type": "Table",
-      "props": {
-        "columns": ["Metric", "Value"],
-        "rows": [
-          ["Total working sets", "26"],
-          ["Estimated duration", "~55 min"],
-          ["Primary focus", "Deadlift strength"],
-          ["Split day", "Pull"]
-        ]
-      }
-    },
-    "session-progress-bar": {
-      "type": "Progress",
-      "props": { "value": 0 }
     }
   },
   "state": {
