@@ -39,7 +39,7 @@ export const GET: APIRoute = ({ params }) => {
   const { category } = params;
   const tenantsDir = path.resolve("tenants");
   const generatedDir = path.resolve("generated");
-  const categoryPath = path.join(tenantsDir, category);
+  const categoryPath = path.join(tenantsDir, category ?? "");
   const manifest: TenantManifestEntry[] = [];
 
   if (!fs.existsSync(categoryPath)) {
@@ -97,7 +97,7 @@ export const GET: APIRoute = ({ params }) => {
     }
 
     // Check if spec exists
-    const specPath = path.join(generatedDir, category, tenantName, "latest.json");
+    const specPath = path.join(generatedDir, category ?? "", tenantName, "latest.json");
     const hasSpec = fs.existsSync(specPath);
 
     manifest.push({

@@ -31,25 +31,36 @@ bun run preview
 ```
 daily-ui/
 ├── src/
-│   ├── content.config.ts          # Content Collections (tenants, templates, specs)
 │   ├── pages/
-│   │   ├── index.astro            # Dashboard
-│   │   └── [category]/[tenant].astro  # Tenant spec viewer
+│   │   ├── index.astro                        # Dashboard
+│   │   ├── [category]/[tenant].astro          # Tenant spec viewer (inlined data)
+│   │   └── api/[category]/[tenant]/
+│   │       └── latest.json.ts                 # JSON API endpoint (static file)
 │   ├── components/
-│   │   └── SpecRenderer.tsx       # React island with state persistence
+│   │   └── SpecRenderer.tsx                   # React island with state persistence
 │   └── lib/
-│       ├── catalog.ts             # json-render component catalog
-│       └── registry.tsx           # React component registry
-├── tenants/                       # Tenant configs (markdown + frontmatter)
+│       ├── catalog.ts                         # json-render component catalog
+│       └── registry.tsx                       # React component registry
+├── tenants/                                   # Tenant configs (markdown + frontmatter)
 │   └── gym/
-│       ├── _template.md           # Category prompt template
-│       └── john.md                # Sample tenant
-├── generated/                     # AI-generated specs (committed by CI)
+│       ├── _template.md                       # Category prompt template
+│       └── john.md                            # Sample tenant
+├── generated/                                 # AI-generated specs (source of truth, committed by CI)
 │   └── gym/john/latest.json
 └── engine/
-    ├── prompts/system.md          # Base system prompt
-    └── generate.sh                # Generation script
+    ├── prompts/system.md                      # Base system prompt
+    └── generate.sh                            # Generation script
 ```
+
+**Data Flow:**
+1. `engine/generate.sh` writes JSON to `generated/gym/john/latest.json`
+2. At build time, Astro creates:
+   - `/api/manifest.json` - list of all tenants
+   - `/api/gym/manifest.json` - list of tenants in gym category
+   - `/api/gym/john/latest.json` - individual spec (static JSON file)
+   - `/gym/john/` - lightweight HTML shell (5.4KB)
+3. Client-side: React fetches `/api/gym/john/latest.json` on page load (~8KB)
+4. Total page weight: ~14KB (HTML + spec), with spec cached by browser
 
 ## Adding Tenants
 
