@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@source "../../node_modules/@json-render/shadcn/dist";
+
 @theme {
   --color-background: #09090b;
   --color-foreground: #fafafa;

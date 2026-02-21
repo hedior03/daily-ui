@@ -18,7 +18,7 @@
     },
     "header-title": {
       "type": "Heading",
-      "props": { "level": 2, "text": "Pull Day — Deadlift Focus" }
+      "props": { "level": "h2", "text": "Pull Day — Deadlift Focus" }
     },
     "header-subtitle": {
       "type": "Text",
@@ -57,28 +57,25 @@
     },
     "warmup-title": {
       "type": "Heading",
-      "props": { "level": 3, "text": "Warmup" }
+      "props": { "level": "h3", "text": "Warmup" }
     },
     "warmup-alert": {
       "type": "Alert",
       "props": {
         "title": "Deadlift prep",
-        "description": "Prime your hinge pattern with light RDLs. Brace hard on every rep — belt optional until working sets above 100kg.",
-        "variant": "warning"
+        "message": "Prime your hinge pattern with light RDLs. Brace hard on every rep — belt optional until working sets above 100kg.",
+        "type": "warning"
       }
     },
     "warmup-table": {
       "type": "Table",
       "props": {
-        "columns": [
-          { "key": "exercise", "header": "Exercise" },
-          { "key": "duration", "header": "Sets / Duration" }
-        ],
+        "columns": ["Exercise", "Sets / Duration"],
         "rows": [
-          { "exercise": "Cat-cow + hip circles", "duration": "1 min" },
-          { "exercise": "Band pull-aparts", "duration": "2 x 15" },
-          { "exercise": "Light RDL (empty bar)", "duration": "2 x 8" },
-          { "exercise": "Dead hang", "duration": "2 x 20s" }
+          ["Cat-cow + hip circles", "1 min"],
+          ["Band pull-aparts", "2 x 15"],
+          ["Light RDL (empty bar)", "2 x 8"],
+          ["Dead hang", "2 x 20s"]
         ]
       }
     },
@@ -101,29 +98,23 @@
     },
     "main-lifts-title": {
       "type": "Heading",
-      "props": { "level": 3, "text": "Main Lifts" }
+      "props": { "level": "h3", "text": "Main Lifts" }
     },
     "deadlift-alert": {
       "type": "Alert",
       "props": {
         "title": "Deadlift cue",
-        "description": "Push the floor away. Squeeze lats before the pull — imagine bending the bar around your shins. Current PR: 140kg — today's top set is ~85% for controlled triples.",
-        "variant": "info"
+        "message": "Push the floor away. Squeeze lats before the pull — imagine bending the bar around your shins. Current PR: 140kg — today's top set is ~85% for controlled triples.",
+        "type": "info"
       }
     },
     "main-lifts-table": {
       "type": "Table",
       "props": {
-        "columns": [
-          { "key": "exercise", "header": "Exercise" },
-          { "key": "sets", "header": "Sets" },
-          { "key": "reps", "header": "Reps" },
-          { "key": "rest", "header": "Rest" },
-          { "key": "rpe", "header": "RPE" }
-        ],
+        "columns": ["Exercise", "Sets", "Reps", "Rest", "RPE"],
         "rows": [
-          { "exercise": "Conventional Deadlift", "sets": "4", "reps": "3", "rest": "3 min", "rpe": "8" },
-          { "exercise": "Barbell Row (Pendlay)", "sets": "4", "reps": "6-8", "rest": "2 min", "rpe": "7-8" }
+          ["Conventional Deadlift", "4", "3", "3 min", "8"],
+          ["Barbell Row (Pendlay)", "4", "6-8", "2 min", "7-8"]
         ]
       }
     },
@@ -146,24 +137,19 @@
     },
     "accessories-title": {
       "type": "Heading",
-      "props": { "level": 3, "text": "Accessories (Supersets)" }
+      "props": { "level": "h3", "text": "Accessories (Supersets)" }
     },
     "accessories-table": {
       "type": "Table",
       "props": {
-        "columns": [
-          { "key": "superset", "header": "Superset" },
-          { "key": "exercise", "header": "Exercise" },
-          { "key": "sets", "header": "Sets" },
-          { "key": "reps", "header": "Reps" }
-        ],
+        "columns": ["Superset", "Exercise", "Sets", "Reps"],
         "rows": [
-          { "superset": "A", "exercise": "Lat Pulldown", "sets": "3", "reps": "10-12" },
-          { "superset": "A", "exercise": "Barbell Curl", "sets": "3", "reps": "10-12" },
-          { "superset": "B", "exercise": "Face Pull", "sets": "3", "reps": "15-20" },
-          { "superset": "B", "exercise": "Hammer Curl", "sets": "3", "reps": "12" },
-          { "superset": "C", "exercise": "Seated Cable Row", "sets": "3", "reps": "12-15" },
-          { "superset": "C", "exercise": "Reverse Fly (machine)", "sets": "3", "reps": "15" }
+          ["A", "Lat Pulldown", "3", "10-12"],
+          ["A", "Barbell Curl", "3", "10-12"],
+          ["B", "Face Pull", "3", "15-20"],
+          ["B", "Hammer Curl", "3", "12"],
+          ["C", "Seated Cable Row", "3", "12-15"],
+          ["C", "Reverse Fly (machine)", "3", "15"]
         ]
       }
     },
@@ -197,20 +183,17 @@
     },
     "cooldown-title": {
       "type": "Heading",
-      "props": { "level": 3, "text": "Cooldown" }
+      "props": { "level": "h3", "text": "Cooldown" }
     },
     "cooldown-table": {
       "type": "Table",
       "props": {
-        "columns": [
-          { "key": "exercise", "header": "Exercise" },
-          { "key": "duration", "header": "Duration" }
-        ],
+        "columns": ["Exercise", "Duration"],
         "rows": [
-          { "exercise": "Lat stretch (hang from bar)", "duration": "30s each side" },
-          { "exercise": "Seated hamstring stretch", "duration": "45s each leg" },
-          { "exercise": "Foam roll lower back & lats", "duration": "2 min" },
-          { "exercise": "Child's pose", "duration": "1 min" }
+          ["Lat stretch (hang from bar)", "30s each side"],
+          ["Seated hamstring stretch", "45s each leg"],
+          ["Foam roll lower back & lats", "2 min"],
+          ["Child's pose", "1 min"]
         ]
       }
     },
@@ -233,20 +216,17 @@
     },
     "session-progress-title": {
       "type": "Heading",
-      "props": { "level": 3, "text": "Session Summary" }
+      "props": { "level": "h3", "text": "Session Summary" }
     },
     "session-stats": {
       "type": "Table",
       "props": {
-        "columns": [
-          { "key": "metric", "header": "Metric" },
-          { "key": "value", "header": "Value" }
-        ],
+        "columns": ["Metric", "Value"],
         "rows": [
-          { "metric": "Total working sets", "value": "26" },
-          { "metric": "Estimated duration", "value": "~55 min" },
-          { "metric": "Primary focus", "value": "Deadlift strength" },
-          { "metric": "Split day", "value": "Pull" }
+          ["Total working sets", "26"],
+          ["Estimated duration", "~55 min"],
+          ["Primary focus", "Deadlift strength"],
+          ["Split day", "Pull"]
         ]
       }
     },

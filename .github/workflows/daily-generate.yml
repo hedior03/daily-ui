@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: daily-generate
+  cancel-in-progress: true
+
 jobs:
   generate:
     runs-on: ubuntu-latest

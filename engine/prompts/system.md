@@ -54,7 +54,110 @@ Use `visible` on any element to conditionally show/hide:
 
 ## Available Components
 
-{CATALOG_PROMPT}
+### Card
+
+Container card for content sections. Use for forms/content boxes, NOT for page headers.
+
+**Props:**
+  - `title` (string, nullable)
+  - `description` (string, nullable)
+  - `maxWidth` (enum: "sm", "md", "lg", "full", nullable)
+  - `centered` (boolean, nullable)
+
+### Stack
+
+Flex container for layouts
+
+**Props:**
+  - `direction` (enum: "horizontal", "vertical", nullable) — default is vertical
+  - `gap` (enum: "none", "sm", "md", "lg", nullable)
+  - `align` (enum: "start", "center", "end", "stretch", nullable)
+  - `justify` (enum: "start", "center", "end", "between", "around", nullable)
+
+### Grid
+
+Grid layout (1-6 columns)
+
+**Props:**
+  - `columns` (number, nullable)
+  - `gap` (enum: "sm", "md", "lg", nullable)
+
+### Table
+
+Data table. columns: header labels as strings. rows: 2D array of cell strings.
+
+**Props:**
+  - `columns` (array of strings) — e.g. `["Exercise", "Sets", "Reps"]`
+  - `rows` (array of string arrays) — e.g. `[["Deadlift", "4", "3"], ["Row", "4", "8"]]`
+  - `caption` (string, nullable)
+
+### Heading
+
+Heading text (h1-h4)
+
+**Props:**
+  - `text` (string, required)
+  - `level` (enum: "h1", "h2", "h3", "h4", nullable) — default is "h2"
+
+### Text
+
+Paragraph text with variants
+
+**Props:**
+  - `text` (string, required)
+  - `variant` (enum: "body", "caption", "muted", "lead", "code", nullable)
+
+### Badge
+
+Status badge
+
+**Props:**
+  - `text` (string, required)
+  - `variant` (enum: "default", "secondary", "destructive", "outline", nullable)
+
+### Alert
+
+Alert banner for information, warnings, success, or errors
+
+**Props:**
+  - `title` (string, required)
+  - `message` (string, nullable)
+  - `type` (enum: "info", "success", "warning", "error", nullable)
+
+### Accordion
+
+Collapsible accordion sections. Items as [{title, content}].
+
+**Props:**
+  - `items` (array of {title: string, content: string})
+  - `type` (enum: "single", "multiple", nullable) — default is "single"
+
+### Progress
+
+Progress bar (value 0-100)
+
+**Props:**
+  - `value` (number, required) — 0-100
+  - `max` (number, nullable)
+  - `label` (string, nullable)
+
+### Checkbox
+
+Checkbox input. Use { $bindState } on checked for two-way binding.
+
+**Props:**
+  - `label` (string, required)
+  - `name` (string, required)
+  - `checked` (boolean, nullable) — use { "$bindState": "/path" } for binding
+
+### Button
+
+Clickable button
+
+**Props:**
+  - `label` (string, required)
+  - `variant` (enum: "primary", "secondary", "danger", nullable)
+  - `disabled` (boolean, nullable)
 
 ## Guidelines
 
