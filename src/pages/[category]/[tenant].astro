@@ -1,0 +1,57 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SpecRenderer from "../../components/SpecRenderer.tsx";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const specs = await getCollection("specs", ({ id }: { id: string }) =>
+    id.endsWith("/latest")
+  );
+
+  return specs.map((spec) => {
+    const parts = spec.id.split("/");
+    return {
+      params: { category: parts[0], tenant: parts[1] },
+      props: { spec },
+    };
+  });
+}
+
+const { category, tenant } = Astro.params;
+const { spec } = Astro.props;
+
+// Try to find the tenant config for display name
+const tenants = await getCollection("tenants");
+const tenantConfig = tenants.find((t) => t.id === `${category}/${tenant}`);
+const displayName = tenantConfig?.data.name ?? tenant;
+---
+
+<Layout title={`${displayName} — ${category}`}>
+  <div class="space-y-6">
+    <div class="flex items-center gap-4">
+      <a
+        href="/daily-ui/"
+        class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+      >
+        &larr; Dashboard
+      </a>
+      <span class="text-muted-foreground/40">|</span>
+      <span class="text-sm text-muted-foreground capitalize">{category}</span>
+    </div>
+
+    <div>
+      <h1 class="text-2xl font-bold tracking-tight">{displayName}</h1>
+      <p class="mt-1 text-sm text-muted-foreground capitalize">
+        {category} tracker
+      </p>
+    </div>
+
+    <div class="rounded-lg border border-border bg-card p-6">
+      <SpecRenderer
+        spec={spec.data}
+        storageKey={`${category}/${tenant}`}
+        client:load
+      />
+    </div>
+  </div>
+</Layout>

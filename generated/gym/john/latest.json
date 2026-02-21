@@ -1,0 +1,207 @@
+{
+  "root": "main-stack",
+  "elements": {
+    "main-stack": {
+      "type": "Stack",
+      "props": { "gap": "lg" },
+      "children": ["header-card", "warmup-card", "main-lifts-card", "accessories-card", "cooldown-card"]
+    },
+    "header-card": {
+      "type": "Card",
+      "props": {},
+      "children": ["header-stack"]
+    },
+    "header-stack": {
+      "type": "Stack",
+      "props": { "gap": "sm" },
+      "children": ["header-title", "header-subtitle", "header-badges"]
+    },
+    "header-title": {
+      "type": "Heading",
+      "props": { "level": 2, "text": "Push Day — Upper Body" }
+    },
+    "header-subtitle": {
+      "type": "Text",
+      "props": { "text": "Saturday, February 21 2026 — Estimated 50 min", "variant": "muted" }
+    },
+    "header-badges": {
+      "type": "Stack",
+      "props": { "direction": "row", "gap": "sm" },
+      "children": ["badge-chest", "badge-triceps", "badge-shoulders"]
+    },
+    "badge-chest": {
+      "type": "Badge",
+      "props": { "text": "Chest" }
+    },
+    "badge-triceps": {
+      "type": "Badge",
+      "props": { "text": "Triceps" }
+    },
+    "badge-shoulders": {
+      "type": "Badge",
+      "props": { "text": "Shoulders (light)" }
+    },
+    "warmup-card": {
+      "type": "Card",
+      "props": {},
+      "children": ["warmup-stack"]
+    },
+    "warmup-stack": {
+      "type": "Stack",
+      "props": { "gap": "md" },
+      "children": ["warmup-title", "warmup-alert", "warmup-table"]
+    },
+    "warmup-title": {
+      "type": "Heading",
+      "props": { "level": 3, "text": "Warmup" }
+    },
+    "warmup-alert": {
+      "type": "Alert",
+      "props": {
+        "title": "Shoulder care",
+        "description": "Band pull-aparts and external rotations before pressing. Keep overhead work light.",
+        "variant": "warning"
+      }
+    },
+    "warmup-table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          { "key": "exercise", "header": "Exercise" },
+          { "key": "duration", "header": "Duration" }
+        ],
+        "rows": [
+          { "exercise": "Band pull-aparts", "duration": "2 x 15" },
+          { "exercise": "External rotations", "duration": "2 x 12" },
+          { "exercise": "Push-up to downward dog", "duration": "2 x 8" }
+        ]
+      }
+    },
+    "main-lifts-card": {
+      "type": "Card",
+      "props": {},
+      "children": ["main-lifts-stack"]
+    },
+    "main-lifts-stack": {
+      "type": "Stack",
+      "props": { "gap": "md" },
+      "children": ["main-lifts-title", "main-lifts-table", "main-lifts-done"]
+    },
+    "main-lifts-title": {
+      "type": "Heading",
+      "props": { "level": 3, "text": "Main Lifts" }
+    },
+    "main-lifts-table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          { "key": "exercise", "header": "Exercise" },
+          { "key": "sets", "header": "Sets" },
+          { "key": "reps", "header": "Reps" },
+          { "key": "rest", "header": "Rest" },
+          { "key": "rpe", "header": "RPE" }
+        ],
+        "rows": [
+          { "exercise": "Flat Barbell Bench Press", "sets": "4", "reps": "6-8", "rest": "3 min", "rpe": "8" },
+          { "exercise": "Incline Dumbbell Press (30deg)", "sets": "3", "reps": "8-10", "rest": "2 min", "rpe": "7" }
+        ]
+      }
+    },
+    "main-lifts-done": {
+      "type": "Checkbox",
+      "props": {
+        "label": "Main lifts completed",
+        "checked": { "$bindState": "/completed/mainLifts" }
+      }
+    },
+    "accessories-card": {
+      "type": "Card",
+      "props": {},
+      "children": ["accessories-stack"]
+    },
+    "accessories-stack": {
+      "type": "Stack",
+      "props": { "gap": "md" },
+      "children": ["accessories-title", "accessories-table", "accessories-accordion", "accessories-done"]
+    },
+    "accessories-title": {
+      "type": "Heading",
+      "props": { "level": 3, "text": "Accessories (Supersets)" }
+    },
+    "accessories-table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          { "key": "superset", "header": "Superset" },
+          { "key": "exercise", "header": "Exercise" },
+          { "key": "sets", "header": "Sets" },
+          { "key": "reps", "header": "Reps" }
+        ],
+        "rows": [
+          { "superset": "A", "exercise": "Cable Fly", "sets": "3", "reps": "12-15" },
+          { "superset": "A", "exercise": "Tricep Pushdown", "sets": "3", "reps": "12-15" },
+          { "superset": "B", "exercise": "Lateral Raise (light)", "sets": "3", "reps": "15-20" },
+          { "superset": "B", "exercise": "Overhead Tricep Extension", "sets": "3", "reps": "12" }
+        ]
+      }
+    },
+    "accessories-accordion": {
+      "type": "Accordion",
+      "props": {
+        "items": [
+          {
+            "title": "Alternative swaps",
+            "content": "Cable Fly → Pec Deck. Lateral Raise → Face Pulls (if shoulder flares up). Tricep Pushdown → Dips (bodyweight)."
+          }
+        ]
+      }
+    },
+    "accessories-done": {
+      "type": "Checkbox",
+      "props": {
+        "label": "Accessories completed",
+        "checked": { "$bindState": "/completed/accessories" }
+      }
+    },
+    "cooldown-card": {
+      "type": "Card",
+      "props": {},
+      "children": ["cooldown-stack"]
+    },
+    "cooldown-stack": {
+      "type": "Stack",
+      "props": { "gap": "md" },
+      "children": ["cooldown-title", "cooldown-table", "cooldown-done"]
+    },
+    "cooldown-title": {
+      "type": "Heading",
+      "props": { "level": 3, "text": "Cooldown" }
+    },
+    "cooldown-table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          { "key": "exercise", "header": "Exercise" },
+          { "key": "duration", "header": "Duration" }
+        ],
+        "rows": [
+          { "exercise": "Chest doorway stretch", "duration": "30s each side" },
+          { "exercise": "Tricep stretch", "duration": "30s each arm" },
+          { "exercise": "Foam roll upper back", "duration": "2 min" }
+        ]
+      }
+    },
+    "cooldown-done": {
+      "type": "Checkbox",
+      "props": {
+        "label": "Cooldown completed",
+        "checked": { "$bindState": "/completed/cooldown" }
+      }
+    }
+  },
+  "state": {
+    "/completed/mainLifts": false,
+    "/completed/accessories": false,
+    "/completed/cooldown": false
+  }
+}
