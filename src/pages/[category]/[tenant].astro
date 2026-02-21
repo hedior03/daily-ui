@@ -1,29 +1,65 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import SpecRenderer from "../../components/SpecRenderer.tsx";
-import { getCollection } from "astro:content";
+import * as fs from "node:fs";
+import * as path from "node:path";
 
 export async function getStaticPaths() {
-  const specs = await getCollection("specs", ({ id }: { id: string }) =>
-    id.endsWith("/latest")
-  );
+  const generatedDir = path.resolve("generated");
 
-  return specs.map((spec) => {
-    const parts = spec.id.split("/");
-    return {
-      params: { category: parts[0], tenant: parts[1] },
-      props: { spec },
-    };
-  });
+  if (!fs.existsSync(generatedDir)) {
+    return [];
+  }
+
+  const paths: Array<{
+    params: { category: string; tenant: string };
+    props: { displayName: string };
+  }> = [];
+
+  const categories = fs.readdirSync(generatedDir, { withFileTypes: true });
+
+  for (const categoryEntry of categories) {
+    if (!categoryEntry.isDirectory() || categoryEntry.name.startsWith(".")) {
+      continue;
+    }
+
+    const categoryPath = path.join(generatedDir, categoryEntry.name);
+    const tenants = fs.readdirSync(categoryPath, { withFileTypes: true });
+
+    for (const tenantEntry of tenants) {
+      if (!tenantEntry.isDirectory() || tenantEntry.name.startsWith(".")) {
+        continue;
+      }
+
+      // Try to read tenant name from config
+      const tenantConfigPath = path.resolve(
+        `tenants/${categoryEntry.name}/${tenantEntry.name}.md`,
+      );
+      let displayName = tenantEntry.name;
+
+      if (fs.existsSync(tenantConfigPath)) {
+        const configContent = fs.readFileSync(tenantConfigPath, "utf-8");
+        const nameMatch = configContent.match(/^name:\s*(.+)$/m);
+        if (nameMatch) {
+          displayName = nameMatch[1].trim();
+        }
+      }
+
+      paths.push({
+        params: {
+          category: categoryEntry.name,
+          tenant: tenantEntry.name,
+        },
+        props: { displayName },
+      });
+    }
+  }
+
+  return paths;
 }
 
 const { category, tenant } = Astro.params;
-const { spec } = Astro.props;
-
-// Try to find the tenant config for display name
-const tenants = await getCollection("tenants");
-const tenantConfig = tenants.find((t) => t.id === `${category}/${tenant}`);
-const displayName = tenantConfig?.data.name ?? tenant;
+const { displayName } = Astro.props;
 ---
 
 <Layout title={`${displayName} — ${category}`}>
@@ -46,12 +82,11 @@ const displayName = tenantConfig?.data.name ?? tenant;
       </p>
     </div>
 
-    <div class="rounded-lg border border-border bg-card p-6">
-      <SpecRenderer
-        spec={spec.data}
-        storageKey={`${category}/${tenant}`}
-        client:load
-      />
-    </div>
+    <SpecRenderer
+      category={category}
+      tenant={tenant}
+      storageKey={`${category}/${tenant}`}
+      client:load
+    />
   </div>
 </Layout>

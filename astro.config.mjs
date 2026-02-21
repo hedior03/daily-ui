@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://hedior03.github.io',
+  site: 'https://hedior.github.io',
   base: '/daily-ui',
   integrations: [react()],
   vite: {
