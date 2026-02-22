@@ -1,200 +1,95 @@
 # Daily UI
 
-A multi-tenant system that uses Claude Code + GitHub Actions to generate daily json-render UI specs, builds them into a static Astro site, and deploys to GitHub Pages. The generated UIs serve as a **client-side life tracking system** — interactive dashboards for gym routines, nutrition, habits, etc. — with state managed entirely in the browser via json-render's `StateProvider` and persisted to `localStorage`.
+A multi-tenant system that uses Claude Code + GitHub Actions to generate daily **Astro MDX** life-tracking specs, builds them into a static Astro site, and deploys to GitHub Pages. The generated UIs serve as a **client-side life tracking system** — interactive dashboards for gym routines, nutrition, habits, etc. — with state managed via **Nanostores** and persisted to `localStorage`.
 
-## Quick Start
+## 🎯 Architecture
+
+This project moved from a verbose JSON-based rendering system to a native MDX architecture. This provides:
+- **Reduced AI Tokens**: MDX is ~75% more compact than the previous JSON spec.
+- **Human Readability**: Generated files in `generated/` are easy to read and manually edit.
+- **Scoped Theming**: Each category (e.g., `gym`) has its own design system overrides via CSS variables.
+- **Type Safety**: Astro Content Collections provide a robust layer for querying and rendering.
+
+## 🚀 Quick Start
 
 ### Prerequisites
-
 - [Bun](https://bun.sh) installed locally
 - Claude Pro or Max subscription (for `claude setup-token`)
 - GitHub repository with Pages enabled
 
 ### Local Development
-
 ```bash
 # Install dependencies
 bun install
+
+# Generate today's workouts for active tenants
+bun run generate
 
 # Start dev server
 bun run dev
 
 # Build for production
 bun run build
-
-# Preview build
-bun run preview
 ```
 
-### Project Structure
+## 🏗️ Project Structure
 
 ```
 daily-ui/
 ├── src/
-│   ├── pages/
-│   │   ├── index.astro                        # Dashboard
-│   │   ├── [category]/[tenant].astro          # Tenant spec viewer (inlined data)
-│   │   └── api/[category]/[tenant]/
-│   │       └── latest.json.ts                 # JSON API endpoint (static file)
-│   ├── components/
-│   │   └── SpecRenderer.tsx                   # React island with state persistence
-│   └── lib/
-│       ├── catalog.ts                         # json-render component catalog
-│       └── registry.tsx                       # React component registry
-├── tenants/                                   # Tenant configs (markdown + frontmatter)
+│   ├── content.config.ts          # Content Collections definition
+│   ├── pages/[category]/[tenant].astro # Main rendering page
+│   ├── components/gym/            # Domain-specific components
+│   │   ├── WorkoutSection.astro
+│   │   ├── ExerciseCard.astro
+│   │   ├── SectionCheck.tsx       # React + Nanostores (persistence)
+│   │   └── ...
+│   └── styles/global.css          # Scoped themes (.theme-gym)
+├── tenants/                       # Tenant personas (Markdown)
 │   └── gym/
-│       ├── _template.md                       # Category prompt template
-│       └── john.md                            # Sample tenant
-├── generated/                                 # AI-generated specs (source of truth, committed by CI)
-│   └── gym/john/latest.json
+│       ├── _template.md           # Category prompt instructions
+│       └── john.md                # Tenant goals & schedule
+├── generated/                     # AI-generated MDX files
+│   └── gym/john/2026-02-21.mdx
 └── engine/
-    ├── prompts/system.md                      # Base system prompt
-    └── generate.sh                            # Generation script
+    ├── prompts/system.md          # AI instructions for MDX/JSX
+    └── generate.ts                # Bun-based generation script
 ```
 
-**Data Flow:**
-1. `engine/generate.sh` writes JSON to `generated/gym/john/latest.json`
-2. At build time, Astro creates:
-   - `/api/manifest.json` - list of all tenants
-   - `/api/gym/manifest.json` - list of tenants in gym category
-   - `/api/gym/john/latest.json` - individual spec (static JSON file)
-   - `/gym/john/` - lightweight HTML shell (5.4KB)
-3. Client-side: React fetches `/api/gym/john/latest.json` on page load (~8KB)
-4. Total page weight: ~14KB (HTML + spec), with spec cached by browser
+## 🛠️ Components (Gym Domain)
 
-## Adding Tenants
+- `<WorkoutSection title="Header">`: Semantic grouping for exercises.
+- `<ExerciseCard name="Squat" sets={3} reps={5} />`: Glanceable metric cards.
+- `<SectionCheck id="warmup" label="Done" storageKey="..." client:load />`: Persistent checkbox.
+- `<FormCue label="Tip">`: Highlighted training cues.
+- `<MuscleGroups groups={["Back", "Legs"]} />`: Visual status badges.
 
-### 1. Create a category template
+## 🤖 AI Generation Pipeline
 
-Create `tenants/{category}/_template.md`:
+1. **engine/generate.ts** scans `tenants/` for active personas scheduled for today.
+2. It assembles a prompt using the **System Prompt**, the **Category Template**, and the **Tenant Persona**.
+3. It invokes the **Claude CLI** to generate a native MDX file.
+4. The file is saved to `generated/{category}/{tenant}/{date}.mdx`.
+5. Astro's **Content Collections** index these files for the static build.
 
-```markdown
----
-category: gym
----
+## 🔐 GitHub Actions Setup
 
-# Gym Routine Generator
+1. **Generate OAuth Token**: Run `claude setup-token` locally and copy the token.
+2. **Add GitHub Secret**: Name it `CLAUDE_CODE_OAUTH_TOKEN`.
+3. **Enable GitHub Pages**: Set source to **GitHub Actions**.
+4. **Deploy**: The `daily-generate` workflow runs daily at 5 AM UTC, commits the new MDX files, and triggers a redeploy.
 
-Generate a workout routine for today as a json-render spec.
+## 🎨 Scoped Theming
 
-## Component Guidelines
-- Card for each section (Warmup, Main Lifts, Accessories, Cooldown)
-- Table for exercise details
-- Checkbox for marking exercises completed
+Themes are controlled by a CSS class on the page wrapper (e.g., `<div class="theme-gym">`). Overrides are defined in `src/styles/global.css`:
+
+```css
+.theme-gym {
+  --color-primary: #22c55e; /* Green for health/gym */
+  --radius: 0.75rem;
+  --color-card: #0c0c0e;
+}
 ```
 
-### 2. Create a tenant config
-
-Create `tenants/{category}/{name}.md`:
-
-```markdown
----
-name: John
-active: true
-schedule:
-  monday: true
-  tuesday: false
-  wednesday: true
-  thursday: false
-  friday: true
-  saturday: true
-  sunday: false
----
-
-# Persona
-
-## Goals
-- Build muscle, focus on upper body
-- Improve deadlift (current PR: 140kg)
-
-## Constraints
-- Shoulder impingement — avoid heavy overhead pressing
-- Sessions 45-60 min max
-```
-
-### 3. Generate locally (optional)
-
-```bash
-bash engine/generate.sh
-```
-
-This creates `generated/{category}/{tenant}/YYYY-MM-DD.json` and `latest.json`.
-
-## GitHub Actions Setup
-
-### 1. Generate OAuth Token (one-time)
-
-Run locally while logged into Claude:
-
-```bash
-claude setup-token
-```
-
-This outputs a long-lived OAuth token for CI/CD.
-
-### 2. Add GitHub Secret
-
-1. Go to **Settings > Secrets and variables > Actions**
-2. Click **New repository secret**
-3. Name: `CLAUDE_CODE_OAUTH_TOKEN`
-4. Value: paste the token from step 1
-5. Click **Add secret**
-
-### 3. Enable GitHub Pages
-
-1. Go to **Settings > Pages**
-2. Source: **GitHub Actions**
-
-### 4. Configure Astro base path
-
-Update `astro.config.mjs`:
-
-```js
-export default defineConfig({
-  site: 'https://<your-username>.github.io',
-  base: '/daily-ui',
-  // ...
-});
-```
-
-### 5. Push to GitHub
-
-The workflows will:
-- **Daily Generate** (5 AM UTC): Run `engine/generate.sh` for active tenants scheduled today
-- **Deploy**: Build Astro + deploy to GitHub Pages on push
-
-## How It Works
-
-1. **Tenants** are defined in markdown files with YAML frontmatter (name, active, schedule) + persona body
-2. **Templates** define what to generate per category (e.g., gym routines, nutrition plans)
-3. **GitHub Actions** runs `engine/generate.sh` daily at 5 AM UTC
-4. **Claude Code CLI** generates json-render specs via the system prompt + category template + tenant persona
-5. **Astro** builds static pages from the generated specs via Content Collections
-6. **SpecRenderer** hydrates as a React island with `client:load`, persisting state to `localStorage`
-
-## Token Expiry
-
-When the `CLAUDE_CODE_OAUTH_TOKEN` expires, the workflow will fail with an auth error. Regenerate:
-
-```bash
-claude setup-token
-```
-
-Then update the GitHub secret with the new token.
-
-## Tech Stack
-
-- **Astro** — Static site framework
-- **React 19** — Island hydration
-- **Bun** — Package manager + runtime
-- **Tailwind 4** — Styling
-- **json-render** — Generative UI framework (Vercel Labs)
-  - `@json-render/core` — Catalog, schema, spec validation
-  - `@json-render/react` — Renderer, state providers
-  - `@json-render/shadcn` — 16 pre-built shadcn/ui components
-- **Claude Code** — AI generation via CLI
-- **GitHub Actions** — Daily cron + deploy automation
-
-## License
-
+## 📝 License
 MIT
