@@ -1,0 +1,114 @@
+---
+title: "Pull — Deadlift Focus"
+date: 2026-02-22
+category: gym
+tenant: mBgV05TGoObwVahzdHTE3
+duration: "75 min"
+muscleGroups:
+  - Back
+  - Hamstrings
+  - Biceps
+  - Rear Delts
+splitDay: "Pull — Deadlift Focus"
+---
+
+import WorkoutSection from "../../../src/components/gym/WorkoutSection.astro";
+import ExerciseCard from "../../../src/components/gym/ExerciseCard.astro";
+import SectionCheck from "../../../src/components/gym/SectionCheck.tsx";
+import FormCue from "../../../src/components/gym/FormCue.astro";
+import MuscleGroups from "../../../src/components/gym/MuscleGroups.astro";
+
+Saturday pull session with a deadlift emphasis. The goal is progressive overload toward your 140kg PR — today's working sets stay at RPE 8 to build volume without grinding.
+
+<MuscleGroups groups={["Back", "Hamstrings", "Biceps", "Rear Delts"]} />
+
+<WorkoutSection title="Warm-Up">
+
+<ExerciseCard name="Rowing Machine" duration="5 min" rpe={4} />
+<ExerciseCard name="Band Pull-Apart" sets={2} reps="15" rest="30s" />
+<ExerciseCard name="Cat-Cow" sets={2} reps="8" rest="20s" />
+<ExerciseCard name="Glute Bridge" sets={2} reps="10" rest="30s" />
+
+<FormCue label="Hip Hinge Prep">
+Use the glute bridges to activate your posterior chain before deadlifting. Squeeze at the top for 2 seconds on every rep.
+</FormCue>
+
+<SectionCheck id="warmup" label="Warm-up complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
+
+</WorkoutSection>
+
+<WorkoutSection title="Main Lift — Conventional Deadlift">
+
+<ExerciseCard name="Conventional Deadlift — Ramp-Up" sets={3} reps="5" rpe="5-6" rest="90s" />
+<ExerciseCard name="Conventional Deadlift — Working Sets" sets={4} reps="4" rpe={8} rest="3 min" />
+
+<FormCue label="Deadlift Cues">
+Brace hard before each rep — big breath into your belt line. Push the floor away rather than pulling the bar up. Lock out with glutes, not by hyperextending the lower back.
+</FormCue>
+
+<SectionCheck id="main-lift" label="Deadlift sets complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
+
+</WorkoutSection>
+
+<WorkoutSection title="Back Accessories">
+
+<ExerciseCard name="Barbell Row — Overhand" sets={3} reps="8-10" rpe={7} rest="2 min" />
+<ExerciseCard name="Chest-Supported Dumbbell Row" sets={3} reps="10-12" rpe={7} rest="90s" />
+<ExerciseCard name="Straight-Arm Pulldown" sets={3} reps="12-15" rpe={7} rest="60s" />
+
+<FormCue label="Row Technique">
+On barbell rows, keep your torso at roughly 45 degrees. Initiate the pull by retracting your shoulder blades before bending the elbows.
+</FormCue>
+
+<SectionCheck id="back-accessories" label="Back accessories complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
+
+</WorkoutSection>
+
+<WorkoutSection title="Hamstrings & Posterior Chain">
+
+<ExerciseCard name="Romanian Deadlift" sets={3} reps="8-10" rpe={7} rest="2 min" />
+<ExerciseCard name="Lying Leg Curl" sets={3} reps="10-12" rpe={8} rest="60s" />
+
+<FormCue label="RDL After Deadlifts">
+Keep the load moderate — these are for stretch and volume, not max effort. Focus on feeling the hamstrings lengthen through the eccentric.
+</FormCue>
+
+<SectionCheck id="hamstrings" label="Hamstring work complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
+
+</WorkoutSection>
+
+<WorkoutSection title="Biceps & Rear Delts">
+
+<ExerciseCard name="Incline Dumbbell Curl" sets={3} reps="10-12" rpe={7} rest="60s" />
+<ExerciseCard name="Face Pull" sets={3} reps="15" rpe={7} rest="60s" />
+<ExerciseCard name="Reverse Pec Deck" sets={2} reps="15" rpe={7} rest="60s" />
+
+<SectionCheck id="arms-rear-delts" label="Biceps & rear delts complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
+
+</WorkoutSection>
+
+<WorkoutSection title="Cooldown">
+
+<ExerciseCard name="Standing Hamstring Stretch" sets={1} reps="45s per side" />
+<ExerciseCard name="Seated Spinal Twist" sets={1} reps="30s per side" />
+<ExerciseCard name="Dead Hang" sets={2} duration="30s" rest="30s" />
+
+<SectionCheck id="cooldown" label="Cooldown complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
+
+</WorkoutSection>
+
+### Deadlift Ramp-Up Guide
+
+| Set | Suggested Load | Purpose |
+|---|---|---|
+| 1 | ~50% of working weight | Groove the pattern |
+| 2 | ~70% of working weight | Build tension |
+| 3 | ~85% of working weight | Final primer |
+
+### Swap Options
+
+| If you need to… | Try instead |
+|---|---|
+| Skip conventional deadlift | Trap bar deadlift (same sets/reps) |
+| Replace barbell row | Pendlay row or Meadows row |
+| No leg curl machine | Nordic curl negatives (3×5) |
