@@ -2,12 +2,13 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://hedior.github.io',
   base: '/daily-ui',
-  integrations: [react()],
+  integrations: [react(), mdx()],
   vite: {
     plugins: [tailwindcss()],
   },

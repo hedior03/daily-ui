@@ -1,0 +1,40 @@
+---
+interface Props {
+	label?: string;
+}
+
+const { label = "Form Cue" } = Astro.props;
+---
+
+<div
+	class="flex items-start gap-3 p-3 rounded-lg bg-muted border-l-4 border-primary text-sm italic text-muted-foreground"
+>
+	<div class="text-primary shrink-0 mt-0.5">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="18"
+			height="18"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			class="lucide lucide-info"
+		>
+			<circle cx="12" cy="12" r="10"></circle>
+			<path d="M12 16v-4"></path>
+			<path d="M12 8h.01"></path>
+		</svg>
+	</div>
+	<div>
+		{
+			label && (
+				<span class="font-bold not-italic block text-foreground mb-0.5">
+					{label}
+				</span>
+			)
+		}
+		<slot />
+	</div>
+</div>

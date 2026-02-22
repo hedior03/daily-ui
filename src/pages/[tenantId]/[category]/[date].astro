@@ -1,0 +1,87 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const workouts = await getCollection("workouts");
+
+  return workouts.map((workout) => {
+    const dateStr = workout.data.date.toISOString().split("T")[0];
+    return {
+      params: {
+        tenantId: workout.data.tenant,
+        category: workout.data.category,
+        date: dateStr,
+      },
+      props: { workout },
+    };
+  });
+}
+
+const { workout } = Astro.props;
+const { tenantId, category, date } = Astro.params;
+const { Content } = await render(workout);
+---
+
+<Layout title={`${workout.data.title} — ${category}`}>
+  <div class={`theme-${category} space-y-12 pb-20`}>
+    <div class="space-y-6">
+      <div class="flex items-center gap-4">
+        <a
+          href={`/daily-ui/${tenantId}/${category}/`}
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          &larr; History
+        </a>
+        <span class="text-muted-foreground/40">|</span>
+        <span class="text-sm text-muted-foreground capitalize">{category}</span>
+        <span class="text-muted-foreground/40">|</span>
+        <span class="text-sm text-muted-foreground font-mono">{date}</span>
+      </div>
+
+      <div>
+        <h1 class="text-3xl font-bold tracking-tight">
+          {workout.data.title}
+        </h1>
+        <time
+          datetime={workout.data.date.toISOString()}
+          class="mt-1 text-muted-foreground block"
+        >
+          {
+            workout.data.date.toLocaleDateString("en-US", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </time>
+      </div>
+    </div>
+
+    <div class="prose prose-invert max-w-none">
+      <Content />
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  @reference "../../../styles/global.css";
+
+  /* Ensure MDX content follows our theme variables */
+  .prose h3 {
+    @apply text-xl font-bold mb-4 mt-8;
+  }
+  .prose p {
+    @apply mb-4 text-muted-foreground;
+  }
+  .prose table {
+    @apply w-full text-sm border-collapse mb-6;
+  }
+  .prose th {
+    @apply text-left p-2 border-b border-border font-semibold text-foreground;
+  }
+  .prose td {
+    @apply p-2 border-b border-border/50 text-muted-foreground;
+  }
+</style>

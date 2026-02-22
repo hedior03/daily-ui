@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@source "../../node_modules/@json-render/shadcn/dist";
-
 @theme {
   --color-background: #09090b;
   --color-foreground: #fafafa;
@@ -20,6 +18,15 @@
   --color-input: #27272a;
   --color-ring: #3f3f46;
   --radius: 0.5rem;
+}
+
+/* Gym Theme Overrides */
+.theme-gym {
+  --color-primary: #22c55e; /* Green */
+  --color-primary-foreground: #052e16;
+  --radius: 0.75rem; /* Rounder cards */
+  --color-card: #0c0c0e;
+  --color-border: #1a1a1c;
 }
 
 body {

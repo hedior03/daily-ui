@@ -1,0 +1,85 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import fs from "node:fs";
+import path from "node:path";
+import yaml from "yaml";
+
+export async function getStaticPaths() {
+  const tenantsDir = path.resolve("tenants");
+  const tenantIds = fs.readdirSync(tenantsDir).filter((f) => {
+    const fullPath = path.join(tenantsDir, f);
+    return fs.statSync(fullPath).isDirectory();
+  });
+
+  return tenantIds
+    .map((id) => {
+      const personaPath = path.join(tenantsDir, id, "PERSONA.md");
+      if (fs.existsSync(personaPath)) {
+        return { params: { tenantId: id } };
+      }
+      return null;
+    })
+    .filter(Boolean);
+}
+
+const { tenantId } = Astro.params;
+const tenantsDir = path.resolve("tenants");
+const tenantDir = path.join(tenantsDir, tenantId);
+const personaPath = path.join(tenantDir, "PERSONA.md");
+
+const personaContent = fs.readFileSync(personaPath, "utf-8");
+const personaMatch = personaContent.match(/^---\r?\n([\s\S]+?)\r?\n---/);
+const personaData = personaMatch ? yaml.parse(personaMatch[1]) : {};
+const tenantName = personaData.name || tenantId;
+
+const files = fs.readdirSync(tenantDir);
+const categories = files
+  .filter((f) => f.endsWith(".md") && f !== "PERSONA.md")
+  .map((f) => {
+    const categoryName = f.replace(".md", "");
+    const content = fs.readFileSync(path.join(tenantDir, f), "utf-8");
+    const match = content.match(/^---\r?\n([\s\S]+?)\r?\n---/);
+    const data = match ? yaml.parse(match[1]) : {};
+    return { id: categoryName, name: categoryName, ...data };
+  });
+---
+
+<Layout title={`${tenantName} Portal`}>
+  <div class="space-y-12">
+    <div class="flex items-center gap-4">
+      <a
+        href="/daily-ui/"
+        class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+      >
+        &larr; All Tenants
+      </a>
+    </div>
+
+    <div>
+      <h1 class="text-3xl font-bold tracking-tight">{tenantName}</h1>
+      <p class="mt-2 text-muted-foreground">
+        Select a category to view training data.
+      </p>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        categories.map((category) => (
+          <a
+            href={`/daily-ui/${tenantId}/${category.id}/`}
+            class={`group block p-6 border border-border rounded-2xl transition-all shadow-sm hover:border-primary/50 theme-${category.id}`}
+          >
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-semibold capitalize group-hover:text-primary transition-colors">
+                {category.name}
+              </h2>
+            </div>
+            <p class="mt-2 text-sm text-muted-foreground">
+              Training history and latest workout.
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

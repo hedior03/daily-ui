@@ -1,0 +1,188 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import fs from "node:fs";
+import path from "node:path";
+
+export async function getStaticPaths() {
+  const tenantsDir = path.resolve("tenants");
+  const tenantIds = fs.readdirSync(tenantsDir).filter((f) => {
+    const fullPath = path.join(tenantsDir, f);
+    return fs.statSync(fullPath).isDirectory();
+  });
+
+  const paths: any[] = [];
+
+  tenantIds.forEach((id) => {
+    const tenantDir = path.join(tenantsDir, id);
+    if (!fs.existsSync(path.join(tenantDir, "PERSONA.md"))) return;
+
+    const files = fs.readdirSync(tenantDir);
+    const categories = files.filter(
+      (f) => f.endsWith(".md") && f !== "PERSONA.md",
+    );
+
+    categories.forEach((f) => {
+      paths.push({
+        params: {
+          tenantId: id,
+          category: f.replace(".md", ""),
+        },
+      });
+    });
+  });
+
+  return paths;
+}
+
+const { tenantId, category } = Astro.params;
+
+// Fetch all workouts for this category and tenant
+const allWorkouts = await getCollection("workouts", ({ data }) => {
+  return data.category === category && data.tenant === tenantId;
+});
+
+// Sort by date descending
+allWorkouts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const latestWorkout = allWorkouts[0];
+const historyWorkouts = allWorkouts; // We'll show all in the timeline, highlighting latest
+
+let LatestContent = null;
+if (latestWorkout) {
+  const { Content } = await render(latestWorkout);
+  LatestContent = Content;
+}
+---
+
+<Layout title={`${category} — ${tenantId}`}>
+  <div class={`theme-${category} space-y-12 pb-20`}>
+    <div class="space-y-6">
+      <div class="flex items-center gap-4">
+        <a
+          href={`/daily-ui/${tenantId}/`}
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          &larr; Portal
+        </a>
+        <span class="text-muted-foreground/40">|</span>
+        <span class="text-sm text-muted-foreground capitalize">{category}</span>
+      </div>
+
+      <div>
+        <h1 class="text-3xl font-bold tracking-tight capitalize">
+          {category} Training
+        </h1>
+        <p class="mt-1 text-muted-foreground">
+          View latest session and full history
+        </p>
+      </div>
+    </div>
+
+    {
+      latestWorkout ? (
+        <div class="grid gap-12 lg:grid-cols-[1fr_300px]">
+          <div class="space-y-12">
+            <article class="relative">
+              <header class="mb-8">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+                    Latest Session
+                  </span>
+                  <time
+                    datetime={latestWorkout.data.date.toISOString()}
+                    class="text-sm font-medium text-muted-foreground"
+                  >
+                    {latestWorkout.data.date.toLocaleDateString("en-US", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </time>
+                </div>
+                <h2 class="text-3xl font-bold tracking-tight">
+                  {latestWorkout.data.title}
+                </h2>
+                {latestWorkout.data.duration && (
+                  <span class="text-sm text-muted-foreground">
+                    Est. {latestWorkout.data.duration}
+                  </span>
+                )}
+              </header>
+
+              <div class="prose prose-invert max-w-none">
+                {LatestContent && <LatestContent />}
+              </div>
+            </article>
+          </div>
+
+          <aside class="space-y-8">
+            <div>
+              <h3 class="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+                History
+              </h3>
+              <nav class="relative border-l border-border ml-2 space-y-4">
+                {historyWorkouts.map((workout) => {
+                  const dateStr = workout.data.date.toISOString().split("T")[0];
+                  const isLatest = workout.id === latestWorkout.id;
+
+                  return (
+                    <div class="relative pl-6">
+                      <div
+                        class={`absolute -left-[5px] top-1.5 w-2 h-2 rounded-full border border-background ${isLatest ? "bg-primary" : "bg-muted"}`}
+                      />
+                      <a
+                        href={`/daily-ui/${tenantId}/${category}/${dateStr}/`}
+                        class={`block group ${isLatest ? "font-semibold" : ""}`}
+                      >
+                        <time
+                          datetime={workout.data.date.toISOString()}
+                          class="text-xs text-muted-foreground group-hover:text-primary transition-colors"
+                        >
+                          {workout.data.date.toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          })}
+                        </time>
+                        <div class="text-sm group-hover:text-primary transition-colors leading-tight mt-0.5">
+                          {workout.data.title}
+                        </div>
+                      </a>
+                    </div>
+                  );
+                })}
+              </nav>
+            </div>
+          </aside>
+        </div>
+      ) : (
+        <div class="py-20 text-center text-muted-foreground border-2 border-dashed border-muted rounded-2xl">
+          <p>No training data found for this category yet.</p>
+        </div>
+      )
+    }
+  </div>
+</Layout>
+
+<style is:global>
+  @reference "../../../styles/global.css";
+
+  /* Ensure MDX content follows our theme variables */
+  .prose h3 {
+    @apply text-xl font-bold mb-4 mt-8;
+  }
+  .prose p {
+    @apply mb-4 text-muted-foreground;
+  }
+  .prose table {
+    @apply w-full text-sm border-collapse mb-6;
+  }
+  .prose th {
+    @apply text-left p-2 border-b border-border font-semibold text-foreground;
+  }
+  .prose td {
+    @apply p-2 border-b border-border/50 text-muted-foreground;
+  }
+</style>
