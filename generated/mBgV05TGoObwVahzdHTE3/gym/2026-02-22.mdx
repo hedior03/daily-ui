@@ -1,15 +1,14 @@
 ---
-title: "Pull — Deadlift Focus"
+title: Active Recovery — Rest Day
 date: 2026-02-22
 category: gym
 tenant: mBgV05TGoObwVahzdHTE3
-duration: "75 min"
+duration: 30 min
 muscleGroups:
-  - Back
-  - Hamstrings
-  - Biceps
-  - Rear Delts
-splitDay: "Pull — Deadlift Focus"
+  - Full Body
+  - Mobility
+  - Flexibility
+splitDay: Rest / Active Recovery
 ---
 
 import WorkoutSection from "../../../src/components/gym/WorkoutSection.astro";
@@ -18,97 +17,201 @@ import SectionCheck from "../../../src/components/gym/SectionCheck.tsx";
 import FormCue from "../../../src/components/gym/FormCue.astro";
 import MuscleGroups from "../../../src/components/gym/MuscleGroups.astro";
 
-Saturday pull session with a deadlift emphasis. The goal is progressive overload toward your 140kg PR — today's working sets stay at RPE 8 to build volume without grinding.
+Sunday is a scheduled **rest day** — no heavy lifting today. Use this session for active recovery: keep the blood moving, address any tight spots from the week, and set yourself up for a strong Monday Push session.
 
-<MuscleGroups groups={["Back", "Hamstrings", "Biceps", "Rear Delts"]} />
+<MuscleGroups groups={["Full Body", "Hip Flexors", "Thoracic Spine", "Hamstrings", "Shoulders"]} />
 
-<WorkoutSection title="Warm-Up">
+---
 
-<ExerciseCard name="Rowing Machine" duration="5 min" rpe={4} />
-<ExerciseCard name="Band Pull-Apart" sets={2} reps="15" rest="30s" />
-<ExerciseCard name="Cat-Cow" sets={2} reps="8" rest="20s" />
-<ExerciseCard name="Glute Bridge" sets={2} reps="10" rest="30s" />
+<WorkoutSection title="Foam Rolling & Soft Tissue">
 
-<FormCue label="Hip Hinge Prep">
-Use the glute bridges to activate your posterior chain before deadlifting. Squeeze at the top for 2 seconds on every rep.
+<FormCue label="Pressure & Pace">
+  Move slowly — 1–2 inches per second. Pause for 3–5 seconds on any tender spots rather than rolling quickly over them. Breathe through the discomfort.
 </FormCue>
 
-<SectionCheck id="warmup" label="Warm-up complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
+<ExerciseCard
+  name="Foam Roll — Thoracic Spine"
+  sets={1}
+  duration="60s"
+  rest="none"
+/>
+
+<ExerciseCard
+  name="Foam Roll — Lats"
+  sets={1}
+  duration="45s each side"
+  rest="none"
+/>
+
+<ExerciseCard
+  name="Foam Roll — Quads & Hip Flexors"
+  sets={1}
+  duration="60s each side"
+  rest="none"
+/>
+
+<ExerciseCard
+  name="Foam Roll — Hamstrings & Glutes"
+  sets={1}
+  duration="60s each side"
+  rest="none"
+/>
+
+<ExerciseCard
+  name="Foam Roll — Calves"
+  sets={1}
+  duration="45s each side"
+  rest="none"
+/>
+
+<SectionCheck
+  id="foam-rolling"
+  label="Soft tissue work complete"
+  storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-22"
+  client:load
+/>
 
 </WorkoutSection>
 
-<WorkoutSection title="Main Lift — Conventional Deadlift">
+---
 
-<ExerciseCard name="Conventional Deadlift — Ramp-Up" sets={3} reps="5" rpe="5-6" rest="90s" />
-<ExerciseCard name="Conventional Deadlift — Working Sets" sets={4} reps="4" rpe={8} rest="3 min" />
+<WorkoutSection title="Mobility Drills">
 
-<FormCue label="Deadlift Cues">
-Brace hard before each rep — big breath into your belt line. Push the floor away rather than pulling the bar up. Lock out with glutes, not by hyperextending the lower back.
+<FormCue label="Quality Over Range">
+  Don't force range of motion — move to the edge of comfort and breathe into the stretch. Each rep should feel slightly more open than the last.
 </FormCue>
 
-<SectionCheck id="main-lift" label="Deadlift sets complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
+<ExerciseCard
+  name="World's Greatest Stretch"
+  sets={2}
+  reps="5 each side"
+  rest="none"
+/>
+
+<ExerciseCard
+  name="90/90 Hip Switch"
+  sets={2}
+  reps="8 each direction"
+  rest="none"
+/>
+
+<ExerciseCard
+  name="Cat-Cow"
+  sets={2}
+  reps="10"
+  rest="none"
+/>
+
+<ExerciseCard
+  name="Thoracic Rotation (Quadruped)"
+  sets={2}
+  reps="10 each side"
+  rest="none"
+/>
+
+<ExerciseCard
+  name="Deep Squat Hold (Goblet Grip on Rack)"
+  sets={3}
+  duration="30s"
+  rest="20s"
+/>
+
+<ExerciseCard
+  name="Banded Pull-Apart"
+  sets={3}
+  reps="15"
+  rest="30s"
+/>
+
+<SectionCheck
+  id="mobility"
+  label="Mobility drills complete"
+  storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-22"
+  client:load
+/>
 
 </WorkoutSection>
 
-<WorkoutSection title="Back Accessories">
+---
 
-<ExerciseCard name="Barbell Row — Overhand" sets={3} reps="8-10" rpe={7} rest="2 min" />
-<ExerciseCard name="Chest-Supported Dumbbell Row" sets={3} reps="10-12" rpe={7} rest="90s" />
-<ExerciseCard name="Straight-Arm Pulldown" sets={3} reps="12-15" rpe={7} rest="60s" />
+<WorkoutSection title="Deadlift Primer — Hinge Pattern Reinforcement">
 
-<FormCue label="Row Technique">
-On barbell rows, keep your torso at roughly 45 degrees. Initiate the pull by retracting your shoulder blades before bending the elbows.
+Use this as low-load motor pattern work to keep your hip hinge sharp ahead of **Saturday's deadlift focus day**. Empty bar or light KB only — this is NOT training, it's movement practice.
+
+<FormCue label="Deadlift Cue Review">
+  Focus on the three cues: **push the floor away** off the ground, **squeeze the armpits toward your hips** to lock the lats, and **drive the hips through** at lockout. Ingrain these before Saturday's heavy session.
 </FormCue>
 
-<SectionCheck id="back-accessories" label="Back accessories complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
+<ExerciseCard
+  name="Romanian Deadlift — Empty Bar / Light KB"
+  sets={3}
+  reps="8"
+  rpe={4}
+  rest="60s"
+/>
+
+<ExerciseCard
+  name="Glute Bridge (Pause at Top)"
+  sets={3}
+  reps="12"
+  rpe={3}
+  rest="45s"
+/>
+
+<SectionCheck
+  id="hinge-primer"
+  label="Hinge primer complete"
+  storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-22"
+  client:load
+/>
 
 </WorkoutSection>
 
-<WorkoutSection title="Hamstrings & Posterior Chain">
+---
 
-<ExerciseCard name="Romanian Deadlift" sets={3} reps="8-10" rpe={7} rest="2 min" />
-<ExerciseCard name="Lying Leg Curl" sets={3} reps="10-12" rpe={8} rest="60s" />
+<WorkoutSection title="Breathwork & Wind-Down">
 
-<FormCue label="RDL After Deadlifts">
-Keep the load moderate — these are for stretch and volume, not max effort. Focus on feeling the hamstrings lengthen through the eccentric.
-</FormCue>
+<ExerciseCard
+  name="Diaphragmatic Breathing (Crocodile Breathing)"
+  sets={1}
+  duration="3 min"
+  rest="none"
+/>
 
-<SectionCheck id="hamstrings" label="Hamstring work complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
+<ExerciseCard
+  name="Supine Twist Stretch"
+  sets={1}
+  duration="60s each side"
+  rest="none"
+/>
+
+<ExerciseCard
+  name="Child's Pose"
+  sets={1}
+  duration="90s"
+  rest="none"
+/>
+
+<SectionCheck
+  id="wind-down"
+  label="Wind-down complete — enjoy your rest day"
+  storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-22"
+  client:load
+/>
 
 </WorkoutSection>
 
-<WorkoutSection title="Biceps & Rear Delts">
+---
 
-<ExerciseCard name="Incline Dumbbell Curl" sets={3} reps="10-12" rpe={7} rest="60s" />
-<ExerciseCard name="Face Pull" sets={3} reps="15" rpe={7} rest="60s" />
-<ExerciseCard name="Reverse Pec Deck" sets={2} reps="15" rpe={7} rest="60s" />
+## Exercise Swap Options
 
-<SectionCheck id="arms-rear-delts" label="Biceps & rear delts complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
-
-</WorkoutSection>
-
-<WorkoutSection title="Cooldown">
-
-<ExerciseCard name="Standing Hamstring Stretch" sets={1} reps="45s per side" />
-<ExerciseCard name="Seated Spinal Twist" sets={1} reps="30s per side" />
-<ExerciseCard name="Dead Hang" sets={2} duration="30s" rest="30s" />
-
-<SectionCheck id="cooldown" label="Cooldown complete" storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-21" client:load />
-
-</WorkoutSection>
-
-### Deadlift Ramp-Up Guide
-
-| Set | Suggested Load | Purpose |
+| Swap This | For This | If… |
 |---|---|---|
-| 1 | ~50% of working weight | Groove the pattern |
-| 2 | ~70% of working weight | Build tension |
-| 3 | ~85% of working weight | Final primer |
+| Foam roller work | Massage gun | You have access to a percussive device |
+| 90/90 Hip Switch | Pigeon Pose | You prefer yoga-style holds |
+| Banded Pull-Apart | Face Pull (cable, light) | You're near a gym today |
+| Goblet Squat Hold | Assisted Squat Hold (TRX) | Ankle mobility is limiting |
 
-### Swap Options
+---
 
-| If you need to… | Try instead |
-|---|---|
-| Skip conventional deadlift | Trap bar deadlift (same sets/reps) |
-| Replace barbell row | Pendlay row or Meadows row |
-| No leg curl machine | Nordic curl negatives (3×5) |
+> **Tomorrow is Monday — Push Day.** Make sure you're well hydrated and have eaten enough carbohydrates today to fuel chest, triceps, and delt work. Target 7–9 hours of sleep tonight.
