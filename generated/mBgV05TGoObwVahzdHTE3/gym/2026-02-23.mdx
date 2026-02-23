@@ -1,0 +1,234 @@
+---
+title: Push Day — Chest, Triceps & Delts
+date: 2026-02-23
+category: gym
+tenant: mBgV05TGoObwVahzdHTE3
+duration: 65 min
+muscleGroups:
+  - Chest
+  - Triceps
+  - Front Delts
+  - Side Delts
+splitDay: Push
+---
+
+import WorkoutSection from "../../../src/components/gym/WorkoutSection.astro";
+import ExerciseCard from "../../../src/components/gym/ExerciseCard.astro";
+import SectionCheck from "../../../src/components/gym/SectionCheck.tsx";
+import FormCue from "../../../src/components/gym/FormCue.astro";
+import MuscleGroups from "../../../src/components/gym/MuscleGroups.astro";
+
+Monday means Push day — drive hard through chest, triceps, and shoulders. Focus on progressive overload on your primary lifts and quality contraction on isolation work.
+
+<MuscleGroups groups={["Chest", "Triceps", "Front Delts", "Side Delts"]} />
+
+---
+
+<WorkoutSection title="Warm-Up">
+
+<ExerciseCard
+  name="Incline Treadmill Walk"
+  duration="5 min"
+  rest="0s"
+/>
+
+<ExerciseCard
+  name="Band Pull-Aparts"
+  sets={2}
+  reps="15"
+  rest="30s"
+/>
+
+<ExerciseCard
+  name="Arm Circles & Cross-Body Shoulder Stretch"
+  sets={2}
+  reps="10 each direction"
+  rest="30s"
+/>
+
+<ExerciseCard
+  name="Push-Up (controlled tempo)"
+  sets={2}
+  reps="10"
+  rest="45s"
+/>
+
+<SectionCheck
+  id="warmup"
+  label="Warm-up complete"
+  storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-23"
+  client:load
+/>
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Primary Lift — Barbell Bench Press">
+
+<FormCue label="Setup & Technique">
+  Retract and depress your scapulae before unracking. Keep a slight arch in your lower back, feet flat on the floor. Bar path should travel in a slight diagonal — touch the lower chest, press back toward the rack. Control the descent for 2 seconds.
+</FormCue>
+
+<ExerciseCard
+  name="Barbell Bench Press — Ramp Sets"
+  sets={2}
+  reps="5"
+  rpe={6}
+  rest="2 min"
+/>
+
+<ExerciseCard
+  name="Barbell Bench Press — Working Sets"
+  sets={4}
+  reps="6–8"
+  rpe={8}
+  rest="3 min"
+/>
+
+<SectionCheck
+  id="bench-press"
+  label="Bench press sets done"
+  storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-23"
+  client:load
+/>
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Chest Accessories">
+
+<ExerciseCard
+  name="Incline Dumbbell Press"
+  sets={3}
+  reps="8–10"
+  rpe={8}
+  rest="2 min"
+/>
+
+<FormCue label="Incline Angle">
+  Set the bench to 30–45°. Keep elbows at roughly 60–70° from your torso — avoid flaring them out wide to protect the shoulder joint.
+</FormCue>
+
+<ExerciseCard
+  name="Cable Chest Fly (low-to-high)"
+  sets={3}
+  reps="12–15"
+  rpe={7}
+  rest="90s"
+/>
+
+<ExerciseCard
+  name="Dumbbell Squeeze Press"
+  sets={2}
+  reps="12"
+  rpe={7}
+  rest="90s"
+/>
+
+<SectionCheck
+  id="chest-accessories"
+  label="Chest accessories complete"
+  storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-23"
+  client:load
+/>
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Shoulder Work — Front & Side Delts">
+
+<ExerciseCard
+  name="Seated Dumbbell Overhead Press"
+  sets={3}
+  reps="8–10"
+  rpe={8}
+  rest="2 min"
+/>
+
+<FormCue label="Overhead Press Tip">
+  Press in a slight forward arc rather than straight up — this is more natural for shoulder mechanics. Avoid letting the lower back hyperextend; brace your core throughout.
+</FormCue>
+
+<ExerciseCard
+  name="Lateral Raise (Cable or Dumbbell)"
+  sets={4}
+  reps="15–20"
+  rpe={7}
+  rest="60s"
+/>
+
+<ExerciseCard
+  name="Dumbbell Front Raise (alternating)"
+  sets={3}
+  reps="12 each arm"
+  rpe={6}
+  rest="60s"
+/>
+
+<SectionCheck
+  id="shoulders"
+  label="Shoulder work complete"
+  storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-23"
+  client:load
+/>
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Triceps Finisher">
+
+<ExerciseCard
+  name="Tricep Rope Pushdown"
+  sets={3}
+  reps="12–15"
+  rpe={7}
+  rest="75s"
+/>
+
+<ExerciseCard
+  name="Overhead Dumbbell Tricep Extension"
+  sets={3}
+  reps="10–12"
+  rpe={8}
+  rest="90s"
+/>
+
+<FormCue label="Overhead Extension Form">
+  Keep your elbows pointing straight at the ceiling — don't let them flare out. Feel the long head of the tricep stretch at the bottom, and fully extend at the top.
+</FormCue>
+
+<ExerciseCard
+  name="Close-Grip Push-Up (to failure)"
+  sets={2}
+  reps="AMRAP"
+  rpe={9}
+  rest="90s"
+/>
+
+<SectionCheck
+  id="triceps"
+  label="Triceps finisher complete"
+  storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-23"
+  client:load
+/>
+
+</WorkoutSection>
+
+---
+
+## Exercise Swap Options
+
+| Original | Swap If Needed | Reason |
+|---|---|---|
+| Barbell Bench Press | Dumbbell Bench Press | Shoulder discomfort or no spotter |
+| Seated DB Overhead Press | Machine Shoulder Press | Lower back fatigue |
+| Cable Chest Fly | Pec Deck Machine | Cable station occupied |
+| Lateral Raise | Machine Lateral Raise | Better isolation, less cheating |
+
+---
+
+**Next session:** Wednesday — Pull Day (back, biceps, rear delts). Rest up and fuel well tonight.
