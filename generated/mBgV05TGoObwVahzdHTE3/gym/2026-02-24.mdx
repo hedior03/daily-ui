@@ -1,0 +1,129 @@
+---
+title: Rest Day — Active Recovery
+date: 2026-02-24
+category: gym
+tenant: mBgV05TGoObwVahzdHTE3
+duration: 20–30 min
+muscleGroups:
+  - Full Body
+  - Mobility
+  - Recovery
+splitDay: Rest Day
+---
+
+import WorkoutSection from "../../../src/components/gym/WorkoutSection.astro";
+import ExerciseCard from "../../../src/components/gym/ExerciseCard.astro";
+import SectionCheck from "../../../src/components/gym/SectionCheck.tsx";
+import FormCue from "../../../src/components/gym/FormCue.astro";
+import MuscleGroups from "../../../src/components/gym/MuscleGroups.astro";
+
+Tuesday is a **scheduled rest day** on your Push/Pull/Legs split. No lifting today — use this time to recover, stay mobile, and set yourself up for a strong Wednesday Pull session.
+
+<MuscleGroups groups={["Full Body", "Mobility", "Flexibility", "Recovery"]} />
+
+<FormCue label="Why Rest Days Matter">
+  Muscle growth happens during recovery, not during the session itself. Skipping rest days accumulates fatigue that blunts strength and hypertrophy gains over time. Protect your Wednesday Pull and Saturday Deadlift sessions by recovering fully today.
+</FormCue>
+
+<WorkoutSection title="Morning Mobility Flow">
+  <ExerciseCard
+    name="Cat-Cow Spinal Mobilisation"
+    sets={2}
+    reps="10"
+    rest="30s"
+    duration="2 min"
+  />
+  <ExerciseCard
+    name="90/90 Hip Stretch (each side)"
+    sets={2}
+    reps="45s hold"
+    rest="30s"
+    duration="3 min"
+  />
+  <ExerciseCard
+    name="Thoracic Rotation (quadruped)"
+    sets={2}
+    reps="10 per side"
+    rest="30s"
+  />
+  <ExerciseCard
+    name="World's Greatest Stretch"
+    sets={2}
+    reps="6 per side"
+    rest="30s"
+    duration="3 min"
+  />
+  <FormCue label="Move with Intention">
+    Keep this slow and deliberate — this is not a warm-up, it's active recovery. Breathe into tight areas and don't rush through reps.
+  </FormCue>
+  <SectionCheck
+    id="morning-mobility"
+    label="Morning mobility flow complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-24"
+    client:load
+  />
+</WorkoutSection>
+
+<WorkoutSection title="Posterior Chain Soft Tissue Work">
+  <ExerciseCard
+    name="Foam Roll — Thoracic Spine"
+    duration="90s"
+    rest="none"
+  />
+  <ExerciseCard
+    name="Foam Roll — Lats (each side)"
+    duration="60s per side"
+    rest="none"
+  />
+  <ExerciseCard
+    name="Foam Roll — Hamstrings"
+    duration="60s per side"
+    rest="none"
+  />
+  <ExerciseCard
+    name="Lacrosse Ball — Glutes / Piriformis"
+    duration="60s per side"
+    rest="none"
+  />
+  <FormCue label="Deadlift Prep Note">
+    Prioritise lats, thoracic spine, and glutes today. These are the structures that take the most load during Saturday's deadlift-focus Pull session. Keeping them supple all week pays off under the bar.
+  </FormCue>
+  <SectionCheck
+    id="soft-tissue"
+    label="Soft tissue work complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-24"
+    client:load
+  />
+</WorkoutSection>
+
+<WorkoutSection title="Optional: Low-Intensity Cardio">
+  <ExerciseCard
+    name="Easy Walk or Cycle"
+    duration="20–30 min"
+    rpe={3}
+  />
+  <FormCue label="Keep It Easy">
+    Zone 2 only — you should be able to hold a full conversation. Anything harder starts cutting into recovery. Skip entirely if yesterday's Push session left you particularly fatigued.
+  </FormCue>
+  <SectionCheck
+    id="liss-cardio"
+    label="Low-intensity cardio complete (optional)"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-24"
+    client:load
+  />
+</WorkoutSection>
+
+---
+
+## Tomorrow: Wednesday Pull
+
+Wednesday brings your **Pull session** — back, biceps, and rear delts. Make sure you're well hydrated and have eaten adequately today to fuel tomorrow's training.
+
+| Priority | Focus |
+|---|---|
+| Primary compound | Barbell or Cable Row |
+| Vertical pull | Weighted Pull-Ups or Lat Pulldown |
+| Rear delt work | Face Pulls, Reverse Flyes |
+| Bicep isolation | Curls — hammer + supinated |
+
+> **Sleep target:** Aim for 7–9 hours tonight. Sleep is the highest-leverage recovery tool available.
