@@ -1,0 +1,238 @@
+---
+title: Pull Day — Back, Biceps & Rear Delts
+date: 2026-02-25
+category: gym
+tenant: mBgV05TGoObwVahzdHTE3
+duration: 65 min
+muscleGroups:
+  - Back
+  - Biceps
+  - Rear Delts
+splitDay: Pull
+---
+
+import WorkoutSection from "../../../src/components/gym/WorkoutSection.astro";
+import ExerciseCard from "../../../src/components/gym/ExerciseCard.astro";
+import SectionCheck from "../../../src/components/gym/SectionCheck.tsx";
+import FormCue from "../../../src/components/gym/FormCue.astro";
+import MuscleGroups from "../../../src/components/gym/MuscleGroups.astro";
+
+Wednesday's Pull session targets the full back, biceps, and rear delts — building the thickness and width that support your deadlift and overall physique balance. Keep every rep controlled and feel the target muscle working.
+
+<MuscleGroups groups={["Lats", "Upper Back", "Rear Delts", "Biceps", "Rhomboids"]} />
+
+---
+
+<WorkoutSection title="Warm-Up">
+
+  <ExerciseCard
+    name="Band Pull-Apart"
+    sets={3}
+    reps="20"
+    rest="30s"
+  />
+
+  <ExerciseCard
+    name="Cat-Cow Thoracic Mobilisation"
+    sets={2}
+    reps="10"
+    rest="30s"
+  />
+
+  <ExerciseCard
+    name="Dead Hang"
+    sets={2}
+    duration="20s"
+    rest="45s"
+  />
+
+  <FormCue label="Shoulder prep">
+    During band pull-aparts, keep a slight bend in your elbows and squeeze your rear delts at the end range — this primes the rotator cuff and sets you up for safe pulling patterns.
+  </FormCue>
+
+  <SectionCheck
+    id="warmup"
+    label="Warm-Up Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-25"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Primary Compound Lifts">
+
+  <ExerciseCard
+    name="Barbell Bent-Over Row"
+    sets={4}
+    reps="6–8"
+    rest="2 min"
+    rpe={8}
+    id="barbell-bent-over-row"
+  />
+
+  <FormCue label="Barbell Row technique">
+    Hinge to roughly 45°, brace your core hard, and drive your elbows behind your torso — not out to the sides. Lower the bar under control for a 2-second eccentric to maximise lat engagement.
+  </FormCue>
+
+  <ExerciseCard
+    name="Weighted Pull-Up"
+    sets={4}
+    reps="5–7"
+    rest="2 min"
+    rpe={8}
+    id="weighted-pull-up"
+  />
+
+  <FormCue label="Pull-Up cue">
+    Initiate the pull by depressing your scapulae before you bend your elbows. Think "elbows to hips" rather than "chin over bar" to keep the lats as the prime mover.
+  </FormCue>
+
+  <SectionCheck
+    id="primary-compounds"
+    label="Primary Compound Lifts Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-25"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Accessory — Back Width & Thickness">
+
+  <ExerciseCard
+    name="Seated Cable Row (Close Grip)"
+    sets={3}
+    reps="10–12"
+    rest="90s"
+    rpe={7}
+    id="seated-cable-row"
+  />
+
+  <ExerciseCard
+    name="Single-Arm Dumbbell Row"
+    sets={3}
+    reps="10–12"
+    rest="75s"
+    rpe={7}
+    id="single-arm-db-row"
+  />
+
+  <ExerciseCard
+    name="Straight-Arm Cable Pulldown"
+    sets={3}
+    reps="12–15"
+    rest="60s"
+    rpe={7}
+    id="straight-arm-pulldown"
+  />
+
+  <FormCue label="Straight-Arm Pulldown">
+    Keep your arms almost fully extended throughout — this is a lat isolation move, not a row. Hinge slightly at the hips and arc the cable attachment down to your thighs, squeezing hard at the bottom.
+  </FormCue>
+
+  <SectionCheck
+    id="back-accessory"
+    label="Back Accessory Work Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-25"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Rear Delts & Upper Back">
+
+  <ExerciseCard
+    name="Rear Delt Cable Fly (face-height)"
+    sets={3}
+    reps="15–20"
+    rest="60s"
+    rpe={6}
+    id="rear-delt-cable-fly"
+  />
+
+  <ExerciseCard
+    name="Face Pull"
+    sets={3}
+    reps="15–20"
+    rest="60s"
+    rpe={6}
+    id="face-pull"
+  />
+
+  <FormCue label="Face Pull form">
+    Pull toward your forehead — not your chin — with your elbows flared high. Pause and externally rotate at the end position for a full rear delt and rotator cuff contraction. This also counteracts anterior shoulder stress from Push days.
+  </FormCue>
+
+  <SectionCheck
+    id="rear-delts"
+    label="Rear Delts & Upper Back Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-25"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Biceps Finisher">
+
+  <ExerciseCard
+    name="EZ-Bar Curl"
+    sets={3}
+    reps="8–10"
+    rest="75s"
+    rpe={7}
+    id="ez-bar-curl"
+  />
+
+  <ExerciseCard
+    name="Incline Dumbbell Curl"
+    sets={3}
+    reps="10–12"
+    rest="60s"
+    rpe={7}
+    id="incline-db-curl"
+  />
+
+  <ExerciseCard
+    name="Hammer Curl"
+    sets={2}
+    reps="12–15"
+    rest="45s"
+    rpe={6}
+    id="hammer-curl"
+  />
+
+  <FormCue label="Incline Curl advantage">
+    The inclined angle puts the long head of the bicep in a stretched position at the bottom — maximise this by letting your arms hang fully before each rep and curling slowly through the full range.
+  </FormCue>
+
+  <SectionCheck
+    id="biceps-finisher"
+    label="Biceps Finisher Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-25"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+## Exercise Swap Reference
+
+| Original | Swap Option | Reason |
+|---|---|---|
+| Weighted Pull-Up | Lat Pulldown | If weighted pull-ups aren't available or fatigued |
+| Barbell Bent-Over Row | Pendlay Row | For more explosive emphasis and reset each rep |
+| Seated Cable Row | Machine Row | Cable station occupied |
+| EZ-Bar Curl | Barbell Curl | EZ bar unavailable |
+| Face Pull | Rear Delt Machine Fly | Cable station busy |
+
+---
+
+> **Rest Day Tomorrow (Thursday):** Use it to recover — prioritise sleep, protein intake, and light movement. Friday's Leg day will be heavy.
