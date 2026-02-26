@@ -1,0 +1,177 @@
+---
+title: Rest Day — Active Recovery
+date: 2026-02-26
+category: gym
+tenant: mBgV05TGoObwVahzdHTE3
+duration: 30 min
+muscleGroups:
+  - Full Body
+  - Mobility
+  - Recovery
+splitDay: Rest Day
+---
+
+import WorkoutSection from "../../../src/components/gym/WorkoutSection.astro";
+import ExerciseCard from "../../../src/components/gym/ExerciseCard.astro";
+import SectionCheck from "../../../src/components/gym/SectionCheck.tsx";
+import FormCue from "../../../src/components/gym/FormCue.astro";
+import MuscleGroups from "../../../src/components/gym/MuscleGroups.astro";
+
+Thursday is a scheduled **rest day** in your Push/Pull/Legs split. Use today to support recovery ahead of tomorrow's Leg Day — a short active recovery session will keep you mobile and primed without adding fatigue.
+
+<MuscleGroups groups={["Full Body", "Hip Flexors", "Thoracic Spine", "Hamstrings", "Calves"]} />
+
+<FormCue label="Why Active Recovery?">
+  Light movement and stretching on rest days increases blood flow to muscle tissue, reduces DOMS, and improves range of motion — all of which directly support your deadlift progress and leg day performance tomorrow.
+</FormCue>
+
+<WorkoutSection title="Light Cardio Primer">
+  <ExerciseCard
+    name="Brisk Walk or Easy Cycling"
+    duration="10 min"
+    rpe={3}
+  />
+
+  <FormCue label="Intensity Check">
+    Keep this genuinely easy — you should be able to hold a full conversation. The goal is circulation, not conditioning.
+  </FormCue>
+
+  <SectionCheck
+    id="cardio-primer"
+    label="Light cardio done"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-26"
+    client:load
+  />
+</WorkoutSection>
+
+<WorkoutSection title="Hip & Posterior Chain Mobility">
+  <ExerciseCard
+    name="90/90 Hip Stretch"
+    sets={2}
+    duration="60s per side"
+    rpe={2}
+    rest="30s"
+  />
+  <ExerciseCard
+    name="World's Greatest Stretch"
+    sets={2}
+    reps="5 per side"
+    rpe={2}
+    rest="30s"
+  />
+  <ExerciseCard
+    name="Lying Hamstring Stretch (band or towel)"
+    sets={2}
+    duration="45s per leg"
+    rpe={2}
+    rest="20s"
+  />
+  <ExerciseCard
+    name="Deep Squat Hold (hands on floor or doorframe)"
+    sets={3}
+    duration="30s"
+    rpe={2}
+    rest="20s"
+  />
+
+  <FormCue label="Hip Mobility & Your Deadlift">
+    Tight hip flexors and limited hip internal rotation are two of the most common limiters on deadlift depth and bar path. Consistent 90/90 work directly targets both — prioritise this on every rest day.
+  </FormCue>
+
+  <SectionCheck
+    id="hip-mobility"
+    label="Hip & posterior chain mobility complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-26"
+    client:load
+  />
+</WorkoutSection>
+
+<WorkoutSection title="Thoracic & Shoulder Mobility">
+  <ExerciseCard
+    name="Thoracic Foam Roll"
+    sets={2}
+    duration="60s"
+    rpe={2}
+    rest="20s"
+  />
+  <ExerciseCard
+    name="Cat-Cow"
+    sets={2}
+    reps="10 slow reps"
+    rpe={1}
+    rest="20s"
+  />
+  <ExerciseCard
+    name="Thread the Needle"
+    sets={2}
+    duration="30s per side"
+    rpe={2}
+    rest="20s"
+  />
+  <ExerciseCard
+    name="Band Pull-Apart (light band)"
+    sets={3}
+    reps="15"
+    rpe={2}
+    rest="30s"
+  />
+
+  <FormCue label="Thoracic Extension">
+    When foam rolling the thoracic spine, pause at tight spots and breathe out fully — don't just roll back and forth quickly. 3–4 deep exhales per stuck segment makes a significant difference.
+  </FormCue>
+
+  <SectionCheck
+    id="thoracic-shoulder"
+    label="Thoracic & shoulder mobility complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-26"
+    client:load
+  />
+</WorkoutSection>
+
+<WorkoutSection title="Calf & Ankle Work">
+  <ExerciseCard
+    name="Standing Calf Stretch (straight knee)"
+    sets={2}
+    duration="45s per leg"
+    rpe={2}
+    rest="15s"
+  />
+  <ExerciseCard
+    name="Standing Calf Stretch (bent knee / soleus focus)"
+    sets={2}
+    duration="45s per leg"
+    rpe={2}
+    rest="15s"
+  />
+  <ExerciseCard
+    name="Ankle Circles"
+    sets={1}
+    reps="10 each direction, each ankle"
+    rpe={1}
+  />
+
+  <FormCue label="Ankle Mobility for Squats & Deadlifts">
+    Restricted ankle dorsiflexion forces your heels to rise in a squat and shifts loading unevenly in Romanian deadlifts. This is a small investment that pays off directly in leg day performance tomorrow.
+  </FormCue>
+
+  <SectionCheck
+    id="calf-ankle"
+    label="Calf & ankle work done"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-26"
+    client:load
+  />
+</WorkoutSection>
+
+---
+
+## Rest Day Checklist
+
+Use this as a quick reference for the non-training factors that support your **140kg deadlift goal** and overall muscle-building progress:
+
+| Factor | Target |
+|---|---|
+| **Sleep** | 7–9 hours tonight |
+| **Protein** | Hit your daily target (body-weight × ~1.8–2.2 g/kg) |
+| **Hydration** | 2.5–3.5 L water |
+| **Stress** | Keep cortisol low — rest days matter mentally too |
+| **Tomorrow** | Leg Day — Quads, Hamstrings, Glutes, Calves |
