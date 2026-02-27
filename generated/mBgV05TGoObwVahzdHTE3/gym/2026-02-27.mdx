@@ -1,0 +1,270 @@
+---
+title: Legs Day — Quads, Hamstrings, Glutes & Calves
+date: 2026-02-27
+category: gym
+tenant: mBgV05TGoObwVahzdHTE3
+duration: 70 min
+muscleGroups:
+  - Quads
+  - Hamstrings
+  - Glutes
+  - Calves
+splitDay: Legs
+---
+
+import WorkoutSection from "../../../src/components/gym/WorkoutSection.astro";
+import ExerciseCard from "../../../src/components/gym/ExerciseCard.astro";
+import SectionCheck from "../../../src/components/gym/SectionCheck.tsx";
+import FormCue from "../../../src/components/gym/FormCue.astro";
+import MuscleGroups from "../../../src/components/gym/MuscleGroups.astro";
+
+Friday Legs. This session prioritises quad development and glute drive through compound squatting, supported by hamstring isolation and calf work to round out the lower body. Keep intensity high on the main lifts and treat the accessories with intention — they build the base your deadlift day relies on.
+
+<MuscleGroups groups={["Quads", "Hamstrings", "Glutes", "Calves", "Core"]} />
+
+---
+
+<WorkoutSection title="Warm-Up">
+
+  <ExerciseCard
+    name="Stationary Bike / Light Cardio"
+    duration="5 min"
+    rpe={3}
+  />
+  <ExerciseCard
+    name="Leg Swings (Forward & Lateral)"
+    sets={2}
+    reps="10 each direction"
+    rest="30s"
+  />
+  <ExerciseCard
+    name="Bodyweight Squat"
+    sets={2}
+    reps="12"
+    rest="45s"
+    rpe={3}
+  />
+  <ExerciseCard
+    name="Glute Bridge (Bodyweight)"
+    sets={2}
+    reps="15"
+    rest="30s"
+  />
+
+  <SectionCheck
+    id="warmup"
+    label="Warm-up complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-27"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Main Lifts — Squat Focus">
+
+  <FormCue label="Squat Setup">
+    Bar should sit mid-trap (high bar) or across the rear delts (low bar). Brace your core hard before unracking — big breath in, 360° of pressure. Drive knees out in line with toes throughout the descent.
+  </FormCue>
+
+  <ExerciseCard
+    name="Back Squat"
+    sets={4}
+    reps="5–6"
+    rest="3 min"
+    rpe={8}
+    id="back-squat"
+  />
+
+  <FormCue label="Depth & Bracing">
+    Aim for at least parallel — hip crease below the knee. If depth is inconsistent, drop the weight and rebuild. A beltless set at moderate load occasionally is a great bracing check.
+  </FormCue>
+
+  <ExerciseCard
+    name="Romanian Deadlift (RDL)"
+    sets={3}
+    reps="8–10"
+    rest="2 min"
+    rpe={7}
+    id="rdl"
+  />
+
+  <FormCue label="RDL Hinge Pattern">
+    Push the hips back, not down. Maintain a neutral spine and keep the bar close to your legs throughout. You should feel a deep hamstring stretch at the bottom — stop before rounding the lower back.
+  </FormCue>
+
+  <SectionCheck
+    id="main-lifts"
+    label="Main lifts complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-27"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Quad Accessories">
+
+  <ExerciseCard
+    name="Leg Press"
+    sets={3}
+    reps="10–12"
+    rest="2 min"
+    rpe={7}
+    id="leg-press"
+  />
+  <ExerciseCard
+    name="Hack Squat (Machine)"
+    sets={3}
+    reps="10–12"
+    rest="90s"
+    rpe={7}
+    id="hack-squat"
+  />
+  <ExerciseCard
+    name="Leg Extension"
+    sets={3}
+    reps="12–15"
+    rest="60s"
+    rpe={7}
+    id="leg-extension"
+  />
+
+  <FormCue label="Leg Extension Safety">
+    Use a controlled tempo — 2 seconds up, 2 seconds down. Avoid locking out aggressively at the top to protect the knee joint under load.
+  </FormCue>
+
+  <SectionCheck
+    id="quad-accessories"
+    label="Quad accessories complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-27"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Hamstring & Glute Accessories">
+
+  <ExerciseCard
+    name="Lying Leg Curl"
+    sets={3}
+    reps="10–12"
+    rest="90s"
+    rpe={7}
+    id="leg-curl"
+  />
+  <ExerciseCard
+    name="Bulgarian Split Squat (Dumbbells)"
+    sets={3}
+    reps="8–10 each leg"
+    rest="90s"
+    rpe={7}
+    id="bulgarian-split-squat"
+  />
+  <ExerciseCard
+    name="Hip Thrust (Barbell)"
+    sets={3}
+    reps="10–12"
+    rest="90s"
+    rpe={7}
+    id="hip-thrust"
+  />
+
+  <FormCue label="Hip Thrust Glute Activation">
+    At the top of the movement, squeeze the glutes hard and hold for a full second. Avoid hyperextending the lower back — ribs should stay down, pelvis should posteriorly tilt at lockout.
+  </FormCue>
+
+  <SectionCheck
+    id="ham-glute-accessories"
+    label="Hamstring & glute accessories complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-27"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Calves">
+
+  <ExerciseCard
+    name="Standing Calf Raise (Machine or Smith)"
+    sets={4}
+    reps="12–15"
+    rest="60s"
+    rpe={8}
+    id="standing-calf-raise"
+  />
+  <ExerciseCard
+    name="Seated Calf Raise"
+    sets={3}
+    reps="15–20"
+    rest="60s"
+    rpe={7}
+    id="seated-calf-raise"
+  />
+
+  <FormCue label="Full Range on Calves">
+    Get a full stretch at the bottom — heel below the platform — and a full contraction at the top. Half-reps are the most common mistake here. Slow the eccentric down to 3 seconds.
+  </FormCue>
+
+  <SectionCheck
+    id="calves"
+    label="Calves complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-27"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Cool-Down & Mobility">
+
+  <ExerciseCard
+    name="Standing Quad Stretch"
+    duration="45s each leg"
+  />
+  <ExerciseCard
+    name="Pigeon Pose / Figure-4 Hip Stretch"
+    duration="60s each side"
+  />
+  <ExerciseCard
+    name="Seated Hamstring Stretch"
+    duration="45s each leg"
+  />
+  <ExerciseCard
+    name="Foam Roll — Quads, IT Band, Calves"
+    duration="5 min total"
+  />
+
+  <SectionCheck
+    id="cooldown"
+    label="Cool-down complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-27"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+## Exercise Swaps
+
+If any equipment is unavailable, use these alternatives:
+
+| Primary Exercise | Swap Option |
+|---|---|
+| Back Squat | Goblet Squat or Safety Bar Squat |
+| Hack Squat Machine | Heel-Elevated Barbell Squat |
+| Lying Leg Curl | Nordic Hamstring Curl or Swiss Ball Curl |
+| Hip Thrust (Barbell) | Single-Leg Glute Bridge or Cable Pull-Through |
+| Standing Calf Raise | Single-Leg Calf Raise (Bodyweight, slow tempo) |
+
+---
+
+**Note for Saturday:** Tomorrow is the Pull — deadlift focus session. Prioritise recovery tonight with a solid meal, hydration, and adequate sleep. Your hamstrings and glutes will be working again, so don't skip the cool-down stretch above.
