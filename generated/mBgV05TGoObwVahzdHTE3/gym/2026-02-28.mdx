@@ -1,0 +1,256 @@
+---
+title: Saturday Pull — Deadlift Focus
+date: 2026-02-28
+category: gym
+tenant: mBgV05TGoObwVahzdHTE3
+duration: 70 min
+muscleGroups:
+  - Back
+  - Hamstrings
+  - Biceps
+  - Rear Delts
+  - Glutes
+splitDay: Pull — Deadlift Focus
+---
+
+import WorkoutSection from "../../../src/components/gym/WorkoutSection.astro";
+import ExerciseCard from "../../../src/components/gym/ExerciseCard.astro";
+import SectionCheck from "../../../src/components/gym/SectionCheck.tsx";
+import FormCue from "../../../src/components/gym/FormCue.astro";
+import MuscleGroups from "../../../src/components/gym/MuscleGroups.astro";
+
+Today's session is all about the pull and the floor — a deadlift-centred back day built to push past that 140 kg PR while layering in quality volume for the lats, hamstrings, biceps, and rear delts.
+
+<MuscleGroups groups={["Back", "Hamstrings", "Glutes", "Biceps", "Rear Delts"]} />
+
+---
+
+<WorkoutSection title="Warm-Up">
+
+  <ExerciseCard
+    name="Elliptical / Row Erg"
+    duration="5 min"
+    rpe={4}
+  />
+
+  <ExerciseCard
+    name="Hip 90/90 Rotations"
+    sets={2}
+    reps="8 each side"
+    rest="30s"
+  />
+
+  <ExerciseCard
+    name="Romanian Deadlift (empty bar)"
+    sets={2}
+    reps="10"
+    rest="45s"
+  />
+
+  <ExerciseCard
+    name="Banded Pull-Apart"
+    sets={2}
+    reps="15"
+    rest="30s"
+  />
+
+  <FormCue label="Warm-Up Intent">
+    Keep these movements slow and deliberate. Focus on feeling the hamstring load in the RDL and opening up the hips — don't rush into working sets cold.
+  </FormCue>
+
+  <SectionCheck
+    id="warmup"
+    label="Warm-Up Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-28"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Main Lift — Conventional Deadlift">
+
+  <ExerciseCard
+    name="Conventional Deadlift — Ramp Sets"
+    sets={3}
+    reps="3"
+    rest="2 min"
+    rpe={6}
+  />
+
+  <FormCue label="Ramp Set Strategy">
+    Build in 3 ramp sets to your top working set: ~60%, ~75%, ~87% of your target. These are not junk — treat each rep with full focus and the same setup routine every time.
+  </FormCue>
+
+  <ExerciseCard
+    name="Conventional Deadlift — Top Set"
+    sets={1}
+    reps="3"
+    rest="3 min"
+    rpe={8.5}
+  />
+
+  <FormCue label="PR Approach">
+    Current PR is 140 kg. Aim for a strong, confident 3-rep top set at ~130–135 kg today — building the base for a PR attempt in the coming weeks. Brace hard, drive the floor away, lock out with glutes not hyperextension.
+  </FormCue>
+
+  <ExerciseCard
+    name="Conventional Deadlift — Back-Off Sets"
+    sets={3}
+    reps="4"
+    rest="2 min 30s"
+    rpe={7}
+  />
+
+  <FormCue label="Bar Path">
+    Keep the bar dragging your shins the entire way up. Any forward drift will bleed tension from the posterior chain and increase injury risk. Wear your socks if needed.
+  </FormCue>
+
+  <SectionCheck
+    id="deadlift"
+    label="Deadlift Block Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-28"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Posterior Chain Accessories">
+
+  <ExerciseCard
+    name="Romanian Deadlift (barbell)"
+    sets={3}
+    reps="10"
+    rest="90s"
+    rpe={7}
+  />
+
+  <ExerciseCard
+    name="Seated Leg Curl"
+    sets={3}
+    reps="10–12"
+    rest="75s"
+    rpe={7.5}
+  />
+
+  <ExerciseCard
+    name="Single-Leg Hip Thrust (bodyweight or loaded)"
+    sets={3}
+    reps="12 each"
+    rest="60s"
+    rpe={7}
+  />
+
+  <FormCue label="RDL Depth Cue">
+    Hinge until you feel a deep stretch in the hamstrings — typically bar passes the knee by ~10 cm. Don't chase floor depth at the cost of a rounded lower back. Control the descent for 2–3 seconds.
+  </FormCue>
+
+  <SectionCheck
+    id="posterior-chain"
+    label="Posterior Chain Accessories Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-28"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Upper Back & Lat Volume">
+
+  <ExerciseCard
+    name="Chest-Supported Dumbbell Row"
+    sets={4}
+    reps="10–12"
+    rest="75s"
+    rpe={7.5}
+  />
+
+  <ExerciseCard
+    name="Lat Pulldown (neutral-grip)"
+    sets={3}
+    reps="12"
+    rest="75s"
+    rpe={7}
+  />
+
+  <ExerciseCard
+    name="Seated Cable Row (wide grip)"
+    sets={3}
+    reps="12–15"
+    rest="60s"
+    rpe={7}
+  />
+
+  <FormCue label="Chest-Supported Row">
+    Drive the elbow straight back and squeeze the mid-trap at the top for a full second. Avoid shrugging — depress the shoulder blades before you initiate each pull.
+  </FormCue>
+
+  <SectionCheck
+    id="upper-back"
+    label="Upper Back & Lat Volume Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-28"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Rear Delts & Biceps">
+
+  <ExerciseCard
+    name="Face Pull (cable, rope)"
+    sets={3}
+    reps="15–20"
+    rest="60s"
+    rpe={6}
+  />
+
+  <ExerciseCard
+    name="Incline Dumbbell Curl"
+    sets={3}
+    reps="10–12"
+    rest="60s"
+    rpe={7.5}
+  />
+
+  <ExerciseCard
+    name="Hammer Curl"
+    sets={2}
+    reps="12–15"
+    rest="45s"
+    rpe={7}
+  />
+
+  <FormCue label="Face Pull Setup">
+    Set the cable at head height. Pull to your ears — not your chin — with elbows flaring high. This protects the shoulder joint and properly targets the posterior cuff and rear delt.
+  </FormCue>
+
+  <SectionCheck
+    id="rear-delts-biceps"
+    label="Rear Delts & Biceps Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-02-28"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+## Exercise Swap Reference
+
+| Original | Swap Option | Reason |
+|---|---|---|
+| Conventional Deadlift | Trap Bar Deadlift | Lower back fatigue / joint preference |
+| Seated Leg Curl | Lying Leg Curl / Nordic Curl | Machine availability |
+| Lat Pulldown | Assisted Pull-Up | Variation / feel preference |
+| Incline Dumbbell Curl | Preacher Curl | Elbow comfort |
+| Chest-Supported Row | Single-Arm DB Row | Equipment availability |
+
+---
+
+**Session Notes:** With the Wednesday pull session earlier this week, keep today's top-set RPE honest — an RPE 8.5 that feels like RPE 9 is a sign to cap the weight and bank the quality. Recovery across the week matters more than any single Saturday number. Stay patient, stay consistent.
