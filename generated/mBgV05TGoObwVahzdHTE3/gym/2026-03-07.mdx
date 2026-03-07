@@ -1,0 +1,278 @@
+---
+title: Saturday Pull — Deadlift Focus
+date: 2026-03-07
+category: gym
+tenant: mBgV05TGoObwVahzdHTE3
+duration: 75 min
+muscleGroups:
+  - Back
+  - Hamstrings
+  - Glutes
+  - Biceps
+  - Rear Delts
+splitDay: Pull — Deadlift Focus
+---
+
+import WorkoutSection from "../../../src/components/gym/WorkoutSection.astro";
+import ExerciseCard from "../../../src/components/gym/ExerciseCard.astro";
+import SectionCheck from "../../../src/components/gym/SectionCheck.tsx";
+import FormCue from "../../../src/components/gym/FormCue.astro";
+import MuscleGroups from "../../../src/components/gym/MuscleGroups.astro";
+
+Today's session centres on the conventional deadlift, building toward your 140 kg PR and beyond. The accessory work reinforces posterior chain strength and back thickness to support heavier pulls long-term.
+
+<MuscleGroups groups={["Back", "Hamstrings", "Glutes", "Biceps", "Rear Delts"]} />
+
+---
+
+<WorkoutSection title="Warm-Up">
+
+  <ExerciseCard
+    name="Foam Roll — Thoracic Spine & Lats"
+    duration="2 min"
+  />
+
+  <ExerciseCard
+    name="Hip 90/90 Stretch"
+    sets={2}
+    duration="45s per side"
+    rest="30s"
+  />
+
+  <ExerciseCard
+    name="Romanian Deadlift (Bodyweight)"
+    sets={2}
+    reps="10"
+    rest="45s"
+  />
+
+  <ExerciseCard
+    name="Banded Pull-Apart"
+    sets={2}
+    reps="15"
+    rest="30s"
+  />
+
+  <SectionCheck
+    id="warmup"
+    label="Warm-Up Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-03-07"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Deadlift Ramp-Up">
+
+  > Work up gradually before your top sets. Each ramp-up set should feel controlled and fast — never a grind.
+
+  <ExerciseCard
+    name="Conventional Deadlift — 60 kg"
+    sets={1}
+    reps="5"
+    rest="2 min"
+    rpe={4}
+  />
+
+  <ExerciseCard
+    name="Conventional Deadlift — 90 kg"
+    sets={1}
+    reps="4"
+    rest="2 min"
+    rpe={5}
+  />
+
+  <ExerciseCard
+    name="Conventional Deadlift — 110 kg"
+    sets={1}
+    reps="3"
+    rest="3 min"
+    rpe={6}
+  />
+
+  <ExerciseCard
+    name="Conventional Deadlift — 125 kg"
+    sets={1}
+    reps="2"
+    rest="3 min"
+    rpe={7}
+  />
+
+  <SectionCheck
+    id="deadlift-rampup"
+    label="Ramp-Up Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-03-07"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Deadlift — Top Sets">
+
+  <FormCue label="Setup">
+    Bar over mid-foot, hip-width stance. Hinge to grip — push the floor away rather than thinking "pull". Keep lats tight by imagining you're bending the bar around your legs. Brace hard before the bar leaves the floor.
+  </FormCue>
+
+  <ExerciseCard
+    name="Conventional Deadlift — 135 kg"
+    sets={3}
+    reps="3"
+    rest="4 min"
+    rpe={8}
+  />
+
+  <FormCue label="PR Attempt Protocol">
+    If the 135 kg sets feel solid (RPE ≤ 8), take a 5-minute rest and attempt a single at **142 kg** to push past your current 140 kg PR. Only go for it if your lockout is strong and your lower back feels fresh.
+  </FormCue>
+
+  <ExerciseCard
+    name="Conventional Deadlift — 142 kg (Optional PR Attempt)"
+    sets={1}
+    reps="1"
+    rest="5 min"
+    rpe={9}
+  />
+
+  <SectionCheck
+    id="deadlift-topsets"
+    label="Top Sets Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-03-07"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Posterior Chain Accessories">
+
+  <FormCue label="Romanian Deadlift Cue">
+    Push your hips back — not down. Feel a deep stretch in your hamstrings at the bottom before driving your hips forward to stand. Keep a slight knee bend throughout.
+  </FormCue>
+
+  <ExerciseCard
+    name="Romanian Deadlift"
+    sets={3}
+    reps="8–10"
+    rest="2 min"
+    rpe={7}
+  />
+
+  <ExerciseCard
+    name="Seated Leg Curl"
+    sets={3}
+    reps="10–12"
+    rest="90s"
+    rpe={7}
+  />
+
+  <ExerciseCard
+    name="Single-Leg Hip Thrust"
+    sets={3}
+    reps="10 per side"
+    rest="90s"
+    rpe={7}
+  />
+
+  <SectionCheck
+    id="posterior-chain"
+    label="Posterior Chain Accessories Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-03-07"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Back & Rear Delt Accessories">
+
+  <ExerciseCard
+    name="Chest-Supported Dumbbell Row"
+    sets={3}
+    reps="10–12"
+    rest="90s"
+    rpe={7}
+  />
+
+  <ExerciseCard
+    name="Wide-Grip Lat Pulldown"
+    sets={3}
+    reps="10–12"
+    rest="90s"
+    rpe={7}
+  />
+
+  <ExerciseCard
+    name="Face Pull"
+    sets={3}
+    reps="15"
+    rest="60s"
+    rpe={6}
+  />
+
+  <ExerciseCard
+    name="Incline Dumbbell Rear Delt Fly"
+    sets={2}
+    reps="15"
+    rest="60s"
+    rpe={6}
+  />
+
+  <SectionCheck
+    id="back-reardelt"
+    label="Back & Rear Delt Accessories Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-03-07"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+<WorkoutSection title="Biceps Finisher">
+
+  <ExerciseCard
+    name="EZ-Bar Curl"
+    sets={3}
+    reps="10–12"
+    rest="60s"
+    rpe={7}
+  />
+
+  <ExerciseCard
+    name="Hammer Curl"
+    sets={2}
+    reps="12"
+    rest="60s"
+    rpe={7}
+  />
+
+  <SectionCheck
+    id="biceps"
+    label="Biceps Finisher Complete"
+    storageKey="gym/mBgV05TGoObwVahzdHTE3/2026-03-07"
+    client:load
+  />
+
+</WorkoutSection>
+
+---
+
+## Exercise Swap Reference
+
+| Original | Swap If Needed |
+|---|---|
+| Conventional Deadlift | Trap Bar Deadlift |
+| Seated Leg Curl | Lying Leg Curl / Nordic Curl |
+| Chest-Supported Row | Pendlay Row / Cable Row |
+| Wide-Grip Lat Pulldown | Assisted Pull-Up / Cable Pullover |
+| Face Pull | Band Pull-Apart / Reverse Pec Deck |
+
+---
+
+**Recovery note:** This is your second pull day of the week — Wednesday's session will have built some fatigue. Prioritise sleep tonight and keep nutrition dialled in to support the heavier deadlift stimulus.
